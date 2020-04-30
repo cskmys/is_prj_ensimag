@@ -1,0 +1,73 @@
+= AI
+
+== Requirements
+
+* Network types
+** Convolution layers
+** Fully connected layers
+** An Auto-encoder
+** Combination of above or any others
+
+* Weights
+** Pre-trained
+** Scratch
+
+* Performance evaluation (preferably plots)
+** Error rates
+** ROC curves
+** Accuracy
+** Precision
+** Recall
+
+
+[NOTE]
+====
+Creativity will be rewarded:
+* Visualize intermediate outputs
+* Show failed samples
+====
+
+* Parameters
+** number of layers
+** non-linear activation functions
+** loss functions
+** types of pooling
+** spatial extent (size)
+** number of filters
+** learning rate
+** batch size
+** no of epochs
+** kernel size
+
+== Report
+* Model
+** summary/picture
+* Parameters
+** Types
+*** Convolution Layers
+*** Fully connected Layers
+*** Auto-encoders
+*** Mix
+** Model
+*** number of layers
+*** non-linear activation functions
+*** loss functions
+*** types of pooling
+*** spatial extent (size)
+*** number of filters
+*** learning rate
+*** kernel size
+** Training & Testing params
+*** batch size
+*** no of epochs
+* Results
+** Pictures
+*** Visualize intermediate outputs
+*** Show failed samples
+** Confusion matrix
+** Plots
+*** Error rates
+*** ROC curves
+*** Accuracy
+*** Precision vs Recall
+* Explain results
