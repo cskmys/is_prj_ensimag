@@ -123,6 +123,6 @@ class CNN(Model):
         ((x_train, y_train), (x_test, y_test)) = self._get_ip_data()
 
         img_rows, img_cols = np.shape(x_train)[1], np.shape(x_train)[2]
-        x_train_pix = x_train.reshape(x_train.shape[0], 1, img_rows, img_cols)
-        x_test_pix = x_test.reshape(x_test.shape[0], 1, img_rows, img_cols)
+        x_train_pix = x_train.reshape(x_train.shape[0], img_rows, img_cols, 1)
+        x_test_pix = x_test.reshape(x_test.shape[0], img_rows, img_cols, 1)
         self._normalize_apply_1hot(x_train=x_train_pix, x_test=x_test_pix, y_train=y_train, y_test=y_test)
