@@ -39,7 +39,7 @@ def validate_ele(enum, ele):
         raise ValueError( ele + ' not exist in ' + enum.__name__)
 
 
-def init_test_data(lr, optimizer, loss_func, activation, callback, nb_epochs, batch_siz):
+def init_test_session(lr, optimizer, loss_func, activation, callback, nb_epochs, batch_siz):
     global prj
     prj = Prj()
     _init_const_part()
@@ -58,7 +58,7 @@ def init_test_data(lr, optimizer, loss_func, activation, callback, nb_epochs, ba
     prj.train.batch_siz = batch_siz
 
 
-def deinit_test_data():
+def deinit_test_session():
     kb.clear_session()
     try:
         global prj

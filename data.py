@@ -21,31 +21,6 @@ def get_mnist_data():
     gc.prj.data.nb_class = num_classes
 
 
-def proc_data():
-    x_train = gc.prj.data.actual_ip.train_ip
-    y_train = gc.prj.data.actual_ip.train_op
-    x_test = gc.prj.data.actual_ip.test_ip
-    y_test = gc.prj.data.actual_ip.test_op
-    num_classes = gc.prj.data.nb_class
-
-    img_rows, img_cols = np.shape(x_train)[1], np.shape(x_train)[2]
-    x_train_flat = x_train.reshape(x_train.shape[0], img_rows * img_cols)
-    x_test_flat = x_test.reshape(x_test.shape[0], img_rows * img_cols)
-
-    x_train_flat = x_train_flat.astype('float32')  # convert data
-    x_test_flat = x_test_flat.astype('float32')
-    x_train_flat /= 255  # normalize data
-    x_test_flat /= 255
-
-    y_train_1_hot = keras.utils.to_categorical(y_train, num_classes)
-    y_test_1_hot = keras.utils.to_categorical(y_test, num_classes)
-
-    gc.prj.data.mod_ip.train_ip = x_train_flat
-    gc.prj.data.mod_ip.train_op = y_train_1_hot
-    gc.prj.data.mod_ip.test_ip = x_test_flat
-    gc.prj.data.mod_ip.test_op = y_test_1_hot
-
-
 def plot_metrics(hist):
     fig = plt.figure()
     metrics = list(hist.history.keys())
