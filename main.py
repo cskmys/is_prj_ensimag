@@ -7,10 +7,10 @@ import layers as l
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # Supress warning and informational messages
 
-for i in range(5):
-    gc.init_test_data(lr=0.01, optimizer='sgd', loss_func='categorical_crossentropy', activation='relu', callback=None, nb_epochs=2, batch_siz=8 * 1024)
-    dat.proc_data()
-    gc.prj.model.layers = [l.IpDense(512), l.DropOut((i+1)/20), l.Dense(512), l.Dropout(0.2), l.OpDense()]
+
+def run_test(layers):
+
+    gc.prj.model.layers = layers
     m.get_model()
 
     m.evaluate_model_metrics()
@@ -18,5 +18,20 @@ for i in range(5):
     dat.gen_image_summary(3, 3)
 
     gc.deinit_test_data()
+
+
+for i in range(5):
+    gc.init_test_data(lr=0.01, optimizer='sgd', loss_func='categorical_crossentropy', activation='relu', callback=None,
+                      nb_epochs=2, batch_siz=8 * 1024)
+    dat.proc_data()
+    layers = [l.IpDense(512), l.DropOut((i+1)/20), l.Dense(512), l.Dropout(0.2), l.OpDense()]
+    run_test(layers)
+
+    gc.init_test_data(lr=0.01, optimizer='sgd', loss_func='categorical_crossentropy', activation='relu', callback=None,
+                      nb_epochs=2, batch_siz=8 * 1024)
+    dat.proc_data()
+    layers = [l.ConvIp(6, (3, 3)), l.AvgPooling(), l.Conv(16, (3, 3)), l.AvgPooling(), l.Flat(), l.Dense(120),
+              l.Dense(84), l.OpDense()]
+    run_test(layers)
 
 exit(0)
