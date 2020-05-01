@@ -1,7 +1,7 @@
-import keras
 import matplotlib
 import numpy as np
 from keras.datasets import mnist
+from scikitplot.metrics import plot_confusion_matrix, plot_roc, plot_precision_recall
 
 import matplotlib.pyplot as plt
 import global_const as gc
@@ -21,7 +21,7 @@ def get_mnist_data():
     gc.prj.data.nb_class = num_classes
 
 
-def plot_metrics(hist):
+def plt_metrics(hist):
     fig = plt.figure()
     metrics = list(hist.history.keys())
     nb_metrics = len(metrics) // 2
@@ -77,10 +77,38 @@ def gen_incorrect_image(x, y_pred, y_test, row, col):
                      lambda p, x_idx, yp_idx, yt_idx: p.title('Pred: {} Actual: {}'.format(yp_idx, yt_idx)))
 
 
-def gen_image_summary(row, col):
+def image_gen_precheck():
     assert gc.prj.data.pred_op is not None, "Run use_model 1st"
+
+
+def gen_image_summary(row, col):
+    image_gen_precheck()
     corr_fig = gen_correct_image(gc.prj.data.actual_ip.test_ip, gc.prj.data.pred_op, gc.prj.data.actual_ip.test_op, row, col)
     incorr_fig = gen_incorrect_image(gc.prj.data.actual_ip.test_ip, gc.prj.data.pred_op, gc.prj.data.actual_ip.test_op, row, col)
     corr_fig.savefig(op.get_full_file_nam(gc.prj.files.correct_image))
     incorr_fig.savefig(op.get_full_file_nam(gc.prj.files.incorrect_image))
 
+
+def build_conf_matrix():
+    image_gen_precheck()
+    fig = plt.figure()
+    plot_confusion_matrix(gc.prj.data.actual_ip.test_ip, gc.prj.data.pred_op, normalize=True,
+                          title='Normalized Confusion Matrix')
+    plt.close(fig)
+    fig.savefig(op.get_full_file_nam(gc.prj.files.conf_matrix))
+
+
+def plt_roc():
+    image_gen_precheck()
+    fig = plt.figure()
+    plot_roc(gc.prj.data.actual_ip.test_ip, gc.prj.data.pred_op)
+    plt.close(fig)
+    fig.savefig(op.get_full_file_nam(gc.prj.files.conf_matrix))
+
+
+def plt_precision_recall_curve():
+    image_gen_precheck()
+    fig = plt.figure()
+    plot_precision_recall(gc.prj.data.actual_ip.test_ip, gc.prj.data.pred_op)
+    plt.close(fig)
+    fig.savefig(op.get_full_file_nam(gc.prj.files.conf_matrix))

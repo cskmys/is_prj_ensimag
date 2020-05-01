@@ -17,7 +17,7 @@ def _init_const_part():
     prj.files.correct_image = 'correct.png'
     prj.files.incorrect_image = 'incorrect.png'
     prj.files.metrics_plot = 'metrics.png'
-    prj.files.pickle = 'obj.pkl'
+    prj.files.conf_matrix = 'cmatrix.png'
 
     prj.model.metrics = ['categorical_accuracy']
     # prj.model.lr
@@ -29,11 +29,6 @@ def _init_const_part():
     # prj.train.batch_siz
 
 
-def _init_fetch_part():
-    ut.get_gpu_info()
-    dat.get_mnist_data()
-
-
 def validate_ele(enum, ele):
     if enum.__name__ + '.' + ele not in list(map(str, enum)):
         raise ValueError( ele + ' not exist in ' + enum.__name__)
@@ -43,7 +38,6 @@ def init_test_session(lr, optimizer, loss_func, activation, callback, nb_epochs,
     global prj
     prj = Prj()
     _init_const_part()
-    _init_fetch_part()
     prj.model.lr = lr
 
     validate_ele(Optimizer, optimizer)

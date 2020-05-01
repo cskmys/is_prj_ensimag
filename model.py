@@ -1,23 +1,26 @@
 import os
 import warnings
 
-import global_const as gc
-import layers as l
 import keras.utils as ku
 import keras.models as km
 import keras.optimizers as ko
 import keras.utils.vis_utils as kuv
+import numpy as np
+
+import global_const as gc
+import layers as l
 import paths as op
 import data as dat
-import numpy as np
+import utils as ut
 
 from abc import ABC, abstractmethod
 
 
 class Model(ABC):
-    def __init__(self, lr, optimizer, loss_func, activation, callback, nb_epochs, batch_siz):
-        gc.init_test_session(lr, optimizer, loss_func, activation, callback, nb_epochs, batch_siz)
+    def __init__(self, lr, optimizer, loss_func, activation, nb_epochs, batch_siz):
+        dat.get_mnist_data()
         self._proc_data()
+        gc.init_test_session(lr, optimizer, loss_func, activation, None, nb_epochs, batch_siz)
 
     def _save_model(self):
         file_nam = op.get_full_file_nam(gc.prj.files.model)
@@ -58,7 +61,7 @@ class Model(ABC):
             self._compile_model()
             self._gen_model_image()
             hist = self._train_model()
-            dat.plot_metrics(hist)
+            dat.plt_metrics(hist)
 
     def _mk_model(self):
         layers = gc.prj.model.layers
@@ -97,14 +100,17 @@ class Model(ABC):
     def use_model(self):
         gc.prj.data.pred_op = gc.prj.model.nn.predict_classes(gc.prj.data.mod_ip.test_ip)
         dat.gen_image_summary(3, 3)
+        dat.build_conf_matrix()
+        dat.plt_roc()
+        dat.plt_precision_recall_curve()
 
     def deinit(self):
         gc.deinit_test_session()
 
 
 class ANN(Model):
-    def __init__(self, lr, optimizer, loss_func, activation, callback, nb_epochs, batch_siz):
-        super().__init__(lr, optimizer, loss_func, activation, callback, nb_epochs, batch_siz)
+    def __init__(self, lr, optimizer, loss_func, activation, nb_epochs, batch_siz):
+        super().__init__(lr, optimizer, loss_func, activation, nb_epochs, batch_siz)
 
     def _proc_data(self):
         ((x_train, y_train), (x_test, y_test)) = self._get_ip_data()
@@ -112,12 +118,13 @@ class ANN(Model):
         img_rows, img_cols = np.shape(x_train)[1], np.shape(x_train)[2]
         x_train_flat = x_train.reshape(x_train.shape[0], img_rows * img_cols)
         x_test_flat = x_test.reshape(x_test.shape[0], img_rows * img_cols)
+
         self._normalize_apply_1hot(x_train=x_train_flat, x_test=x_test_flat, y_train=y_train, y_test=y_test)
 
 
 class CNN(Model):
-    def __init__(self, lr, optimizer, loss_func, activation, callback, nb_epochs, batch_siz):
-        super().__init__(lr, optimizer, loss_func, activation, callback, nb_epochs, batch_siz)
+    def __init__(self, lr, optimizer, loss_func, activation, nb_epochs, batch_siz):
+        super().__init__(lr, optimizer, loss_func, activation, nb_epochs, batch_siz)
 
     def _proc_data(self):
         ((x_train, y_train), (x_test, y_test)) = self._get_ip_data()
@@ -125,4 +132,5 @@ class CNN(Model):
         img_rows, img_cols = np.shape(x_train)[1], np.shape(x_train)[2]
         x_train_pix = x_train.reshape(x_train.shape[0], img_rows, img_cols, 1)
         x_test_pix = x_test.reshape(x_test.shape[0], img_rows, img_cols, 1)
+
         self._normalize_apply_1hot(x_train=x_train_pix, x_test=x_test_pix, y_train=y_train, y_test=y_test)

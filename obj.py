@@ -15,7 +15,7 @@ class Files:
     metrics_plot: str = ''
     correct_image: str = ''
     incorrect_image: str = ''
-    pickle: str = ''
+    conf_matrix: str = ''
 # roc_plot
 # confusion_matrix
 # precision_recall
