@@ -1,7 +1,41 @@
 from keras.layers.core import Dense, Dropout
 from keras.layers import Conv2D, MaxPooling2D, Flatten, AveragePooling2D
 
-import global_const as gc
+
+class Layers:
+    def __init__(self, cfg):
+        self.cfg = cfg
+
+    def IpDense(self, units):
+        return Dense(units=units, input_shape=(self.cfg.prj.data.mod_ip.test_ip.shape[1],),
+                     activation=self.cfg.get_activation())
+
+    def HiddenDense(self, units):
+        return Dense(units=units, activation=self.cfg.get_activation())
+
+    def DropOut(self, rate):
+        return Dropout(rate=rate)
+
+    def OpDense(self):
+        return Dense(units=self.cfg.get_nb_classes(), activation='softmax')
+
+    def ConvIp(self, filter, kernel_shape):
+        img_rows = self.cfg.prj.data.actual_ip.train_ip.shape[1]
+        img_cols = self.cfg.prj.data.actual_ip.train_ip.shape[2]
+        ip_shape = (img_rows, img_cols, 1)
+        return Conv2D(filters=filter, kernel_size=kernel_shape, input_shape=ip_shape, activation=self.cfg.get_activation())
+
+    def Conv(self, filter, kernel_shape):
+        return Conv2D(filters=filter, kernel_size=kernel_shape, activation=self.cfg.get_activation())
+
+    def MaxPooling(self, pool_shape):
+        return MaxPooling2D(pool_size=pool_shape)
+
+    def Flat(self):
+        return Flatten()
+
+    def AvgPooling(self):
+        return AveragePooling2D()
 
 
 def get_layer_name(layer):
@@ -37,42 +71,3 @@ def set_name_for_layer(layers, layer_idx):
 def set_layer_names(layers):
     for i, layer in enumerate(layers):
         set_name_for_layer(layers, i)
-
-
-def IpDense(units):
-    return Dense(units=units, input_shape=(gc.prj.data.mod_ip.test_ip.shape[1], ), activation=gc.prj.model.activation)
-
-
-def HiddenDense(units):
-    return Dense(units=units, activation=gc.prj.model.activation)
-
-
-def DropOut(rate):
-    return Dropout(rate=rate)
-
-
-def OpDense():
-    return Dense(units=gc.prj.data.nb_class, activation='softmax')
-
-
-def ConvIp(filter, kernel_shape):
-    img_rows = gc.prj.data.actual_ip.train_ip.shape[1]
-    img_cols = gc.prj.data.actual_ip.train_ip.shape[2]
-    ip_shape = (img_rows, img_cols, 1)
-    return Conv2D(filters=filter, kernel_size=kernel_shape, input_shape=ip_shape, activation=gc.prj.model.activation)
-
-
-def Conv(filter, kernel_shape):
-    return Conv2D(filters=filter, kernel_size=kernel_shape, activation=gc.prj.model.activation)
-
-
-def MaxPooling(pool_shape):
-    return MaxPooling2D(pool_size=pool_shape)
-
-
-def Flat():
-    return Flatten()
-
-
-def AvgPooling():
-    return AveragePooling2D()

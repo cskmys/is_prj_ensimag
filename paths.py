@@ -1,7 +1,6 @@
 import os
 from pathlib import Path
 
-import global_const as gc
 import layers as l
 
 
@@ -12,9 +11,9 @@ def name_layers(layers):
     return name
 
 
-def _get_cur_sub_dir_name():
-    model = gc.prj.model
-    train = gc.prj.train
+def _get_cur_sub_dir_name(cfg):
+    model = cfg.prj.model
+    train = cfg.prj.train
     l_hash = name_layers(model.layers)
     subdir = '{opti}{loss}{act}l{lr}e{epochs}b{batch}m{hash}'.format(opti=model.optimizer, loss=model.loss_func,
                                                                      act=model.activation, lr=model.lr,
@@ -23,8 +22,8 @@ def _get_cur_sub_dir_name():
     return subdir
 
 
-def get_full_file_nam(file_nam):
-    file_path = os.path.join('./', gc.prj.files.op_dir, _get_cur_sub_dir_name())
+def get_full_file_nam(cfg, file_nam):
+    file_path = os.path.join('./', cfg.prj.files.op_dir, _get_cur_sub_dir_name(cfg))
     Path(file_path).mkdir(parents=True, exist_ok=True)
 
     full_file_nam = os.path.join(file_path, file_nam)

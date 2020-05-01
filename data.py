@@ -1,28 +1,23 @@
 import matplotlib
 import numpy as np
 from keras.datasets import mnist
+import matplotlib.pyplot as plt
 from scikitplot.metrics import plot_confusion_matrix, plot_roc, plot_precision_recall
 
-import matplotlib.pyplot as plt
-import global_const as gc
 import paths as op
 
 matplotlib.use('agg')
 
 
-def get_mnist_data():
+def get_mnist_data(cfg):
     (x_train, y_train), (x_test, y_test) = mnist.load_data()
     num_classes = np.unique(y_test).size
-
-    gc.prj.data.actual_ip.train_ip = x_train
-    gc.prj.data.actual_ip.train_op = y_train
-    gc.prj.data.actual_ip.test_ip = x_test
-    gc.prj.data.actual_ip.test_op = y_test
-    gc.prj.data.nb_class = num_classes
+    cfg.set_actual_ip(x_train, y_train, x_test, y_test, num_classes)
 
 
-def plt_metrics(hist):
+def plt_metrics(cfg):
     fig = plt.figure()
+    hist = cfg.get_test_eval_metrics()
     metrics = list(hist.history.keys())
     nb_metrics = len(metrics) // 2
     for i in range(nb_metrics):
@@ -35,7 +30,7 @@ def plt_metrics(hist):
         plt.legend(['test', 'train'], loc='best')
     plt.tight_layout()
     plt.close(fig)
-    fig.savefig(op.get_full_file_nam(gc.prj.files.metrics_plot))
+    fig.savefig(op.get_full_file_nam(cfg, cfg.prj.files.metrics_plot))
 
 
 # https://nextjournal.com/gkoehler/digit-recognition-with-keras
@@ -77,38 +72,49 @@ def gen_incorrect_image(x, y_pred, y_test, row, col):
                      lambda p, x_idx, yp_idx, yt_idx: p.title('Pred: {} Actual: {}'.format(yp_idx, yt_idx)))
 
 
-def image_gen_precheck():
-    assert gc.prj.data.pred_op is not None, "Run use_model 1st"
+def image_gen_precheck(cfg):
+    y_test, y_pred = cfg.get_test_eval_op_params()
+    assert y_pred is not None, "Run use_model 1st"
 
 
-def gen_image_summary(row, col):
-    image_gen_precheck()
-    corr_fig = gen_correct_image(gc.prj.data.actual_ip.test_ip, gc.prj.data.pred_op, gc.prj.data.actual_ip.test_op, row, col)
-    incorr_fig = gen_incorrect_image(gc.prj.data.actual_ip.test_ip, gc.prj.data.pred_op, gc.prj.data.actual_ip.test_op, row, col)
-    corr_fig.savefig(op.get_full_file_nam(gc.prj.files.correct_image))
-    incorr_fig.savefig(op.get_full_file_nam(gc.prj.files.incorrect_image))
+def get_pred_class(y_pred_prob):
+    y_pred_prob = np.asarray(y_pred_prob)
+    y_pred_class = np.argmax(y_pred_prob, axis=1)
+    return y_pred_class
 
 
-def build_conf_matrix():
-    image_gen_precheck()
-    fig = plt.figure()
-    plot_confusion_matrix(gc.prj.data.actual_ip.test_ip, gc.prj.data.pred_op, normalize=True,
-                          title='Normalized Confusion Matrix')
-    plt.close(fig)
-    fig.savefig(op.get_full_file_nam(gc.prj.files.conf_matrix))
+def gen_image_summary(cfg, row, col):
+    image_gen_precheck(cfg)
+    x_test, y_test, y_pred_prob = cfg.get_test_eval_params()
+    y_pred_class = get_pred_class(y_pred_prob)
+    corr_fig = gen_correct_image(x_test, y_pred_class, y_test, row, col)
+    incorr_fig = gen_incorrect_image(x_test, y_pred_class, y_test, row, col)
+    corr_fig.savefig(op.get_full_file_nam(cfg, cfg.prj.files.correct_image))
+    incorr_fig.savefig(op.get_full_file_nam(cfg, cfg.prj.files.incorrect_image))
 
 
-def plt_roc():
-    image_gen_precheck()
-    fig = plt.figure()
-    plot_roc(gc.prj.data.actual_ip.test_ip, gc.prj.data.pred_op)
-    plt.close(fig)
-    fig.savefig(op.get_full_file_nam(gc.prj.files.conf_matrix))
+def build_conf_matrix(cfg):
+    image_gen_precheck(cfg)
+    y_test, y_pred_prob = cfg.get_test_eval_op_params()
+    y_pred_class = get_pred_class(y_pred_prob)
+    plot_confusion_matrix(y_test, y_pred_class, normalize=True, title='Normalized Confusion Matrix')
+    plt.savefig(op.get_full_file_nam(cfg, cfg.prj.files.conf_matrix))
+    plt.close()
 
 
-def plt_precision_recall_curve():
-    image_gen_precheck()
-    fig = plt.figure()
-    plot_precision_recall(gc.prj.data.actual_ip.test_ip, gc.prj.data.pred_op)
-    plt.close(fig)
-    fig.savefig(op.get_full_file_nam(gc.prj.files.conf_matrix))
+def plt_roc(cfg):
+    image_gen_precheck(cfg)
+    y_test, y_pred_prob = cfg.get_test_eval_op_params()
+    plot_roc(y_test, y_pred_prob)
+    lgd = plt.legend(loc='center left', bbox_to_anchor=(1, 0.5))
+    plt.savefig(op.get_full_file_nam(cfg, cfg.prj.files.roc_curve), bbox_extra_artists=(lgd,), bbox_inches='tight')
+    plt.close()
+
+
+def plt_precision_recall_curve(cfg):
+    image_gen_precheck(cfg)
+    y_test, y_pred_prob = cfg.get_test_eval_op_params()
+    plot_precision_recall(y_test, y_pred_prob)
+    lgd = plt.legend(loc='center left', bbox_to_anchor=(1, 0.5))
+    plt.savefig(op.get_full_file_nam(cfg, cfg.prj.files.prec_recall_curve), bbox_extra_artists=(lgd,), bbox_inches='tight')
+    plt.close()

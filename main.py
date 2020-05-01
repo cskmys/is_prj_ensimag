@@ -1,7 +1,5 @@
 import os
 
-import global_const as gc
-import data as dat
 import model as m
 import layers as l
 
@@ -18,12 +16,14 @@ def run_test(mod, layers):
 for i in range(5):
 
     ann = m.ANN(lr=0.01, optimizer='sgd', loss_func='categorical_crossentropy', activation='relu', nb_epochs=2, batch_siz=8 * 1024)
-    layers = [l.IpDense(512), l.DropOut((i + 1) / 20), l.Dense(512), l.Dropout(0.2), l.OpDense()]
+    L = l.Layers(ann.cfg)
+    layers = [L.IpDense(512), L.DropOut((i + 1) / 20), L.HiddenDense(512), L.DropOut(0.2), L.OpDense()]
     run_test(ann, layers)
 
     cnn = m.CNN(lr=0.01, optimizer='sgd', loss_func='categorical_crossentropy', activation='relu', nb_epochs=2, batch_siz=8 * 1024)
-    layers = [l.ConvIp(6, (3, 3)), l.AvgPooling(), l.Conv(16, (3, 3)), l.AvgPooling(), l.Flat(), l.Dense(120),
-              l.Dense(84), l.OpDense()]
+    L = l.Layers(cnn.cfg)
+    layers = [L.ConvIp(6, (3, 3)), L.AvgPooling(), L.Conv(16, (3, 3)), L.AvgPooling(), L.Flat(), L.HiddenDense(120),
+              L.HiddenDense(84), L.OpDense()]
     run_test(cnn, layers)
 
 exit(0)
