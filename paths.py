@@ -29,3 +29,8 @@ def get_full_file_nam(cfg, file_nam):
     full_file_nam = os.path.join(file_path, file_nam)
     assert len(full_file_nam) < 256, 'File name too big'
     return full_file_nam
+
+
+def get_dump_file_name(cfg):
+    file_name = os.path.join('./', cfg.prj.files.op_dir, cfg.prj.files.dump)
+    return file_name

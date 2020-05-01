@@ -1,0 +1,17 @@
+.Confusion Matrix
+image::./op/sgdcategorical_crossentropyrelul0.01e2b4096mDense512reluDense512reluDense10softmax/cmatrix.png[Confusion Matrix]
+.Correctly classified samples
+image::./op/sgdcategorical_crossentropyrelul0.01e2b4096mDense512reluDense512reluDense10softmax/correct.png[Correctly classified samples]
+.Incorrectly classified samples
+image::./op/sgdcategorical_crossentropyrelul0.01e2b4096mDense512reluDense512reluDense10softmax/incorrect.png[Incorrectly classified samples]
+.Metrics
+image::./op/sgdcategorical_crossentropyrelul0.01e2b4096mDense512reluDense512reluDense10softmax/metrics.png[Metrics]
+.Model Summary
+image::./op/sgdcategorical_crossentropyrelul0.01e2b4096mDense512reluDense512reluDense10softmax/model.png[Model Summary]
+.Precision-Recall
+image::./op/sgdcategorical_crossentropyrelul0.01e2b4096mDense512reluDense512reluDense10softmax/precision_recall_curve.png[Precision-Recall]
+.ROC
+image::./op/sgdcategorical_crossentropyrelul0.01e2b4096mDense512reluDense512reluDense10softmax/roc_curve.png[ROC]
+----
+["Dense 512relu", "Dense 512relu", "Dense 10softmax"]
+----

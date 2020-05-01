@@ -47,7 +47,7 @@ def get_layer_param_str(layer):
     if layer_name == 'Dropout':
         return str(layer.rate)
     if layer_name == 'Dense':
-        return layer.activation.__name__
+        return str(layer.units) + layer.activation.__name__
     if layer_name == 'Conv2D':
         (x, y) = layer.kernel_size
         return str('{fil}f{x}x{y}').format(fil=layer.filters, x=x, y=y)

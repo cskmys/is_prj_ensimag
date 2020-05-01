@@ -1,0 +1,82 @@
+{
+    "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e2b8192mDense512reluDense10softmax/./",
+    "layers": [
+        "Dense 512relu",
+        "Dense 10softmax"
+    ],
+    "result_metrics": [
+        2.1970894847869875,
+        0.21400000154972076
+    ],
+    "loss_func": "categorical_crossentropy",
+    "optimizer": "sgd",
+    "metrics": [
+        "categorical_accuracy"
+    ],
+    "activation": "relu",
+    "lr": 0.01,
+    "nb_epochs": 2,
+    "batch_size": 8192
+}
+{
+    "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e2b8192mDense512reluDense512reluDense10softmax/./",
+    "layers": [
+        "Dense 512relu",
+        "Dense 512relu",
+        "Dense 10softmax"
+    ],
+    "result_metrics": [
+        2.2004630546569826,
+        0.2526000142097473
+    ],
+    "loss_func": "categorical_crossentropy",
+    "optimizer": "sgd",
+    "metrics": [
+        "categorical_accuracy"
+    ],
+    "activation": "relu",
+    "lr": 0.01,
+    "nb_epochs": 2,
+    "batch_size": 8192
+}
+{
+    "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e2b4096mDense512reluDense10softmax/./",
+    "layers": [
+        "Dense 512relu",
+        "Dense 10softmax"
+    ],
+    "result_metrics": [
+        1.9729636825561523,
+        0.4855000078678131
+    ],
+    "loss_func": "categorical_crossentropy",
+    "optimizer": "sgd",
+    "metrics": [
+        "categorical_accuracy"
+    ],
+    "activation": "relu",
+    "lr": 0.01,
+    "nb_epochs": 2,
+    "batch_size": 4096
+}
+{
+    "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e2b4096mDense512reluDense512reluDense10softmax/./",
+    "layers": [
+        "Dense 512relu",
+        "Dense 512relu",
+        "Dense 10softmax"
+    ],
+    "result_metrics": [
+        2.1100337757110594,
+        0.4027999937534332
+    ],
+    "loss_func": "categorical_crossentropy",
+    "optimizer": "sgd",
+    "metrics": [
+        "categorical_accuracy"
+    ],
+    "activation": "relu",
+    "lr": 0.01,
+    "nb_epochs": 2,
+    "batch_size": 4096
+}

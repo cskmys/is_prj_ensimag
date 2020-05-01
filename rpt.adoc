@@ -1,0 +1,13 @@
+// 1-2: Conf Matrix
+// 3-4: Correct
+// 5-6: Incorrect
+// 7-8: Metrics
+// 9-10: Model
+// 11-12: Precision-Recall
+// 13-14: ROC
+// 15-18: Layers
+
+include::./op/sgdcategorical_crossentropyrelul0.01e2b8192mDense512reluDense10softmax/list.adoc[lines=1;7..-1]
+
+We start our study with a very simple network of following configuration:
+

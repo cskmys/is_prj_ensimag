@@ -8,8 +8,9 @@ import keras.utils.vis_utils as kuv
 import numpy as np
 import keras.backend as kb
 import gc as pgc
-import obj as o
 
+import obj as o
+import utils as ut
 import layers as l
 import paths as op
 import data as dat
@@ -86,24 +87,22 @@ class Model(ABC):
         self._save_model()
         return hist
 
-    def evaluate_model_metrics(self):
-        (x_test, y_test) = self.cfg.get_test_ip_data()
-        metrics = self.cfg.get_nn().evaluate(x_test, y_test, verbose=2)
-        metrics_dict = dict()
-        for i, key in enumerate(self.cfg.prj.model.metrics):
-            metrics_dict[key] = metrics[i]
-        return metrics_dict
-
     def use_model(self):
         (x_test, y_test) = self.cfg.get_test_ip_data()
+
+        metrics = self.cfg.get_nn().evaluate(x_test, y_test, verbose=2)
+        self.cfg.set_test_metrics_result(metrics)
+
         y_pred_probab = self.cfg.get_nn().predict(x_test)
         self.cfg.set_test_probab_result(y_pred_probab)
+
         dat.gen_image_summary(self.cfg, 3, 3)
         dat.build_conf_matrix(self.cfg)
         dat.plt_roc(self.cfg)
         dat.plt_precision_recall_curve(self.cfg)
 
     def deinit(self):
+        ut.dump(self.cfg)
         kb.clear_session()
         self.cfg.deinit()
         pgc.collect()

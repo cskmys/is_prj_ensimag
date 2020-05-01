@@ -19,6 +19,8 @@ class Files:
     conf_matrix: str = ''
     roc_curve: str = ''
     prec_recall_curve: str = ''
+    dump: str = ''
+    image_lst: str = ''
 # error_rate -> separate or within metrics plot?
 
 
@@ -34,6 +36,7 @@ class IpDataSet:
 class OpDataSet:
     pred_op_prob: np.ndarray = None
     hist: np.ndarray = None
+    metrics: list = None
 
 
 @dataclass
@@ -119,7 +122,8 @@ class Cfg:
         self.prj.files.conf_matrix = 'cmatrix.png'
         self.prj.files.roc_curve = 'roc_curve.png'
         self.prj.files.prec_recall_curve = 'precision_recall_curve.png'
-
+        self.prj.files.image_lst = 'list.adoc'
+        self.prj.files.dump = 'dump.json'
         self.prj.model.metrics = ['categorical_accuracy']
 
     def _init_test_session(self, lr, optimizer, loss_func, activation, nb_epochs, batch_siz):
@@ -169,6 +173,9 @@ class Cfg:
     def set_test_probab_result(self, res):
         self.prj.data.out.pred_op_prob = res
 
+    def set_test_metrics_result(self, res):
+        self.prj.data.out.metrics = res
+
     def get_test_eval_op_params(self):
         y_test = self.prj.data.actual_ip.test_op
         y_pred = self.prj.data.out.pred_op_prob
@@ -208,6 +215,13 @@ class Cfg:
 
     def get_layers(self):
         return self.prj.model.layers
+
+    def set_gpu_info(self, driver_ver, gpu_cnt, gpu_name, gpu_mem_mb, clk_info):
+        self.prj.misc.gpu_info.driver_ver = driver_ver
+        self.prj.misc.gpu_info.nb_gpu = gpu_cnt
+        self.prj.misc.gpu_info.gpu_name = gpu_name
+        self.prj.misc.gpu_info.gpu_mem_mb = gpu_mem_mb
+        self.prj.misc.gpu_info.clk_info = clk_info
 
     def deinit(self):
         try:
