@@ -53,6 +53,12 @@ class LossFunc(Enum):
 class Optimizer(Enum):
     adam = 'adam'
     sgd = 'sgd'
+    RMSprop = 'RMSprop'
+    Adagrad = 'Adagrad'
+    Adadelta = 'Adadelta'
+    Adam = 'Adam'
+    Adamax = 'Adamax'
+    Nadam = 'Nadam'
 
 
 class Metrics(Enum):
@@ -64,6 +70,10 @@ class Activation(Enum):
     relu = 'relu'
     linear = 'linear'
     softmax = 'softmax'
+    sigmoid = 'sigmoid'
+    hard_sigmoid = 'hard_sigmoid'
+    tanh = 'tanh'
+    exponential = 'exponential'
 
 
 @dataclass

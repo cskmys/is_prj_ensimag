@@ -1,0 +1,75 @@
+# tag::cmatrix[]
+.Confusion Matrix
+image::./op/Nadamcategorical_crossentropyrelul0.01e32b64mDense512reluDense512reluDense10softmax/cmatrix.png[Confusion Matrix]
+# end::cmatrix[]
+
+# tag::correct[]
+.Correctly classified samples
+image::./op/Nadamcategorical_crossentropyrelul0.01e32b64mDense512reluDense512reluDense10softmax/correct.png[Correctly classified samples]
+# end::correct[]
+
+# tag::incorrect[]
+.Incorrectly classified samples
+image::./op/Nadamcategorical_crossentropyrelul0.01e32b64mDense512reluDense512reluDense10softmax/incorrect.png[Incorrectly classified samples]
+# end::incorrect[]
+
+# tag::metrics[]
+.Metrics
+image::./op/Nadamcategorical_crossentropyrelul0.01e32b64mDense512reluDense512reluDense10softmax/metrics.png[Metrics]
+# end::metrics[]
+
+# tag::model[]
+.Model Summary
+image::./op/Nadamcategorical_crossentropyrelul0.01e32b64mDense512reluDense512reluDense10softmax/model.png[Model Summary]
+# end::model[]
+
+# tag::precision_recall_curve[]
+.Precision-Recall
+image::./op/Nadamcategorical_crossentropyrelul0.01e32b64mDense512reluDense512reluDense10softmax/precision_recall_curve.png[Precision-Recall]
+# end::precision_recall_curve[]
+
+# tag::roc_curve[]
+.ROC
+image::./op/Nadamcategorical_crossentropyrelul0.01e32b64mDense512reluDense512reluDense10softmax/roc_curve.png[ROC]
+# end::roc_curve[]
+
+# tag::layer[]
+[source, json]
+----
+[
+    "Dense 512relu",
+    "Dense 512relu",
+    "Dense 10softmax"
+]
+----
+# end::layer[]
+
+# tag::config[]
+[source, json]
+----
+{
+    "loss_func": "categorical_crossentropy",
+    "optimizer": "Nadam",
+    "activation": "relu",
+    "lr": 0.01,
+    "nb_epochs": 32,
+    "batch_size": 64
+}
+----
+# end::config[]
+
+# tag::result[]
+[source, json]
+----
+{
+    "loss": 0.24443292233878883,
+    "categorical_accuracy": 0.9789000153541565
+}
+----
+# end::result[]
+
+# tag::special[]
+.Optimizer and Model Accuracy
+image::./op/Nadamcategorical_crossentropyrelul0.01e32b64mDense512reluDense512reluDense10softmax/special.png[Optimizer and Model Accuracy]
+# end::special[]
+

@@ -1,37 +1,39 @@
 = Report
 
-== Abbreviations used
-
-
 == Introduction
 
-=== Input
+
+
+
+== Conventional Neural Network
+=== Parameters
+* Input:
++
 We use each pixel(normalized) of 2d Gray scale image as an input to our Neural Network.
 Since, the images from MNIST database are of 28x28 pixels, we have 784 inputs.
 
-=== Output
+* Output:
++
 The outputs labels from MNIST database are converted to one-hot encoding.
 From out network, for each class we receive the probability values which we further process it to get
 various metrics such as accuracy, ROC, Precision-Recall, Confusion Matrix etc.
 To avoid, unnecessary blotting of the report, we have the plots whenever there's something interesting.
 
-=== Training Procedure
+=== Procedure
+* Training
++
 Out of 70,000 images from MNSIT database, we use 60,000 images as training samples.
 
-=== Testing Procedure
+* Testing
++
 Out of 70,000 images from MNSIT database, we use 10,000 images as testing samples.
 
-=== Evaluation Procedure
+* Evaluation
++
 Since we have multi-class classification problem, we use *categorical_accuracy*.
 It checks to see if the index of the maximal true value is equal to the index of the maximal predicted value.
 
-[NOTE]
-====
-We can use this as loss function as well. We experiment with various loss functions, but we use this as an
-overall metric to compare models and configurations.
-====
-
-== Baseline
+=== Baseline
 We start our study with a very simple network having just one hidden layer
 
 include::./op/sgdcategorical_crossentropyrelul0.01e4b8192mDense512reluDense10softmax/list.adoc[tags=model]
@@ -344,4 +346,207 @@ the other by just 0.6% i,e, one model classifies 20-25 images more correctly tha
 10000 validation images.
 
 Since 32 epochs with 64 batch size is significantly faster than the vice-versa, we pick this configuration for further study.
+
+=== Activation function
+For this section we will use the following configuration from the last section, while modifying the activation functions.
+include::./op/sgdcategorical_crossentropyrelul0.01e32b64mDense512reluDense512reluDense10softmax/list.adoc[tags=config]
+
+[NOTE]
+====
+We don't change the activation of output layer since for a multi-class classification, softmax is the most apt amongst
+the metrics available in Keras for our problem.
+====
+
+Since we use, sgd(stochastic gradient descent) as the algorithm for back-propagation, we have to choose a function
+that is differentiable. Also, we need to choose a non-linear function to help network fit complex pattern.
+Hence, we picked the following activation functions:
+
+* Relu:
++
+include::./op/sgdcategorical_crossentropyrelul0.01e32b64mDense512reluDense512reluDense10softmax/list.adoc[tags=result]
++
+[source, json]
+----
+{
+    "training_time": 49.7351598739624
+}
+----
+
+* Sigmoid:
++
+include::./op/sgdcategorical_crossentropysigmoidl0.01e32b64mDense512sigmoidDense512sigmoidDense10softmax/list.adoc[tags=result]
++
+[source, json]
+----
+{
+    "training_time": 52.25036144256592
+}
+----
+
+* Hard-Sigmoid:
++
+include::./op/sgdcategorical_crossentropyhard_sigmoidl0.01e32b64mDense512hard_sigmoidDense512hard_sigmoidDense10softmax/list.adoc[tags=result]
++
+[source, json]
+----
+{
+    "training_time": 56.87085223197937
+}
+----
+
+* tanh:
++
+include::./op/sgdcategorical_crossentropytanhl0.01e32b64mDense512tanhDense512tanhDense10softmax/list.adoc[tags=result]
++
+[source, json]
+----
+{
+    "training_time": 51.18115472793579
+}
+----
+
+* linear:
++
+include::./op/sgdcategorical_crossentropylinearl0.01e32b64mDense512linearDense512linearDense10softmax/list.adoc[tags=result]
++
+[source, json]
+----
+{
+    "training_time": 52.688600301742554
+}
+----
+
+As usual *Relu* provided highest accuracy with shorter training time of 49 seconds, while hard_sigmoid takes the
+longest amount of time.
+
+In terms of accuracy, we see that the non-linear functions that are centered around zero provide good accuracy while
+those centered at 0.5 such as sigmoid and hard_sigmoid performed the worst.
+
+Along with non-linear functions above, out of curiosity, we tested the linear function of keras which takes input
+tensor as the activation value. We are bit surprised to see that it infact performs, giving an accuracy of 92%!
+One reasoning we had from observing other function results is that, maybe the constant value obtained after
+differentiation is centered around 0 and 0.5.
+Hence, it performs better than functions centered at 0.5 and worse than those at 0.
+
+=== Optimizer and Learning rates
+We carry the same configuration from previous section but vary the optimizers:
+include::./op/sgdcategorical_crossentropyrelul0.01e32b64mDense512reluDense512reluDense10softmax/list.adoc[tags=config]
+
+We leave the learning rates at the defaults recommended by Keras.
+
+When we see the accuracy of the prediction with test data and the tie taken for training we get the following plot:
+
+include::./op/Nadamcategorical_crossentropyrelul0.01e32b64mDense512reluDense512reluDense10softmax/list.adoc[tags=special]
+
+We observe that there's an improvement in accuracy. Curious about improvements in accuracy and such high time taken,
+we checked the default learning rates of the optimizers recommended by keras, we saw:
+[source, json]
+----
+{
+    "sgd": 0.01,
+    "adagrad": 0.01,
+    "adadelta": 1.0,
+    "adam": 0.001,
+    "adamax": 0.002,
+    "Nadam": 0.002,
+    "RMSProp": 0.001,
+}
+----
+
+Though we see that all other optimizers performed better, except adagrad and adadelta, all other had learning rate
+significantly lower than sgd(though sgd performs the fastest).
+
+When we compare the plots:
+
+* adagrad
++
+include::./op/Adagradcategorical_crossentropyrelul0.01e32b64mDense512reluDense512reluDense10softmax/list.adoc[tags=metrics]
+
+* adadelta
++
+include::./op/Adadeltacategorical_crossentropyrelul0.01e32b64mDense512reluDense512reluDense10softmax/list.adoc[tags=metrics]
+
+* adam
++
+include::./op/Adamcategorical_crossentropyrelul0.01e32b64mDense512reluDense512reluDense10softmax/list.adoc[tags=metrics]
+
+* adamax
++
+include::./op/Adamaxcategorical_crossentropyrelul0.01e32b64mDense512reluDense512reluDense10softmax/list.adoc[tags=metrics]
+
+* Nadam
++
+include::./op/Nadamcategorical_crossentropyrelul0.01e32b64mDense512reluDense512reluDense10softmax/list.adoc[tags=metrics]
+
+* RMSProp
++
+include::./op/RMSpropcategorical_crossentropyrelul0.01e32b64mDense512reluDense512reluDense10softmax/list.adoc[tags=metrics]
+
+In all cases, we see that the training accuracy reaches 100%, it could be an indicator of over-fitting the data.
+Hence we checked roc and precision recall curves.
+Here, we present the curves of adadelta but all the curves of other optimizers were very much identical:
+
+* ROC curve:
++
+include::./op/Adadeltacategorical_crossentropyrelul0.01e32b64mDense512reluDense512reluDense10softmax/list.adoc[tags=roc_curve]
+
+* Precision recall curve:
++
+include::./op/Adadeltacategorical_crossentropyrelul0.01e32b64mDense512reluDense512reluDense10softmax/list.adoc[tags=precision_recall_curve]
+
+If we check the incorrectly classified outputs:
+
+include::./op/Adadeltacategorical_crossentropyrelul0.01e32b64mDense512reluDense512reluDense10softmax/list.adoc[tags=incorrect]
+
+We see that model has predicted all the values well and the ones that it missed are in the cases where inputs were
+not clear or the shape is very unconventional almost to the point that even a person could mis-recognize at first glance.
+
+Since, our model reaches 100% way earlier than sgd for all the optimizer that we used, we can reduce the number of
+epochs to stop training early and prevent over-fitting.
+
+If we consider the time plots shown previously, we can see that with adamax, adagrad and adadelta reaches 100% in < 10 epochs.
+Hence, by choosing one of them we can train our model faster. We expect the training time to come down < 50% of current time.
+
+Now we evaluate the model for 5 epochs with adamax, adagrad and adadelta. The results we obtained were:
+
+include::./op/Adamaxcategorical_crossentropyrelul0.01e5b64mDense512reluDense512reluDense10softmax/list.adoc[tags=special]
+
+Looking at the plots adamax seems to be away from over-fitting(in comparison to others) and fastest as well.
+Also, the metrics plot of adamax:
+
+include::./op/Adamaxcategorical_crossentropyrelul0.01e5b64mDense512reluDense512reluDense10softmax/list.adoc[tags=metrics]
+
+Then roc:
+
+include::./op/Adamaxcategorical_crossentropyrelul0.01e5b64mDense512reluDense512reluDense10softmax/list.adoc[tags=roc_curve]
+
+Precision recall:
+
+include::./op/Adamaxcategorical_crossentropyrelul0.01e5b64mDense512reluDense512reluDense10softmax/list.adoc[tags=precision_recall_curve]
+
+If we check the confusion matrix:
+
+include::./op/Adamaxcategorical_crossentropyrelul0.01e5b64mDense512reluDense512reluDense10softmax/list.adoc[tags=cmatrix]
+
+Other than classification of label 9, everything else seems to be well.
+
+include::./op/Adamaxcategorical_crossentropyrelul0.01e5b64mDense512reluDense512reluDense10softmax/list.adoc[tags=incorrect]
+Now if we see our model has performed best possible at very less training time.
+The error are very 'forgivable' especially the 5s, 6, 3 and 2 are distorted and our model though wrong in these examples
+has approximated the features to the best available ones.
+
+=== Conclusion
+After running some more experiments for lower number of neurons and layers under the last configuration:
+include::./op/Adamaxcategorical_crossentropyrelul0.01e5b64mDense512reluDense512reluDense10softmax/list.adoc[tags=config]
+
+we observe that we achieved almost 'similar' levels of accuracy even at 1 hidden layer and 128 neurons.
+To make sure that we are not missing something important, we did even shuffle the data and we were able to see similar
+results and behavior.
+
+Whether our experimentation has led us to a sweet spot of the hyper-parameters and hence we can achieve the same result
+with lesser layers or whether our model from last section:
+
+include::./op/Adamaxcategorical_crossentropyrelul0.01e5b64mDense512reluDense512reluDense10softmax/list.adoc[tags=model]
+
+has too many weights much of which has almost no impact on the outcome is a question needs to be explored further.
 
