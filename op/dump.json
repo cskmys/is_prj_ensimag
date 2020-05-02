@@ -1510,5 +1510,1461 @@
         "lr": 0.003,
         "nb_epochs": 5,
         "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e10b16mConv2D32f3x3MaxPooling2D2x2Conv2D32f3x3MaxPooling2D2x2FlattenDense128reluDropout0.2Dense10softmax/./",
+        "layers": [
+            "Conv2D 32f3x3",
+            "MaxPooling2D 2x2",
+            "Conv2D 32f3x3",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 128relu",
+            "Dropout 0.2",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.02779104402179728,
+            0.9909999966621399
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 10,
+        "batch_size": 16
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e10b16mConv2D2f3x3MaxPooling2D2x2Conv2D2f3x3MaxPooling2D2x2FlattenDense128reluDropout0.2Dense10softmax/./",
+        "layers": [
+            "Conv2D 2f3x3",
+            "MaxPooling2D 2x2",
+            "Conv2D 2f3x3",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 128relu",
+            "Dropout 0.2",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.0885398499649018,
+            0.9726999998092651
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 10,
+        "batch_size": 16
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D2f3x3MaxPooling2D2x2Conv2D2f3x3MaxPooling2D2x2FlattenDense128reluDropout0.2Dense10softmax/./",
+        "layers": [
+            "Conv2D 2f3x3",
+            "MaxPooling2D 2x2",
+            "Conv2D 2f3x3",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 128relu",
+            "Dropout 0.2",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.11648414384126664,
+            0.9641000032424927
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 6,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D4f3x3MaxPooling2D2x2Conv2D4f3x3MaxPooling2D2x2FlattenDense128reluDropout0.2Dense10softmax/./",
+        "layers": [
+            "Conv2D 4f3x3",
+            "MaxPooling2D 2x2",
+            "Conv2D 4f3x3",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 128relu",
+            "Dropout 0.2",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.06993432801924646,
+            0.9767000079154968
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 6,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f3x3MaxPooling2D2x2Conv2D8f3x3MaxPooling2D2x2FlattenDense128reluDropout0.2Dense10softmax/./",
+        "layers": [
+            "Conv2D 8f3x3",
+            "MaxPooling2D 2x2",
+            "Conv2D 8f3x3",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 128relu",
+            "Dropout 0.2",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.03682649951138301,
+            0.9872999787330627
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 6,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D16f3x3MaxPooling2D2x2Conv2D16f3x3MaxPooling2D2x2FlattenDense128reluDropout0.2Dense10softmax/./",
+        "layers": [
+            "Conv2D 16f3x3",
+            "MaxPooling2D 2x2",
+            "Conv2D 16f3x3",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 128relu",
+            "Dropout 0.2",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.033205782197404186,
+            0.989300012588501
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 6,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D32f3x3MaxPooling2D2x2Conv2D32f3x3MaxPooling2D2x2FlattenDense128reluDropout0.2Dense10softmax/./",
+        "layers": [
+            "Conv2D 32f3x3",
+            "MaxPooling2D 2x2",
+            "Conv2D 32f3x3",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 128relu",
+            "Dropout 0.2",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.025998168638171046,
+            0.9919999837875366
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 6,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D64f3x3MaxPooling2D2x2Conv2D64f3x3MaxPooling2D2x2FlattenDense128reluDropout0.2Dense10softmax/./",
+        "layers": [
+            "Conv2D 64f3x3",
+            "MaxPooling2D 2x2",
+            "Conv2D 64f3x3",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 128relu",
+            "Dropout 0.2",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.028180095317645464,
+            0.9905999898910522
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 6,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D4f5x5MaxPooling2D2x2Conv2D4f5x5MaxPooling2D2x2FlattenDense128reluDropout0.2Dense10softmax/./",
+        "layers": [
+            "Conv2D 4f5x5",
+            "MaxPooling2D 2x2",
+            "Conv2D 4f5x5",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 128relu",
+            "Dropout 0.2",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.06758540671295486,
+            0.9778000116348267
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 6,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D4f7x7MaxPooling2D2x2Conv2D4f7x7MaxPooling2D2x2FlattenDense128reluDropout0.2Dense10softmax/./",
+        "layers": [
+            "Conv2D 4f7x7",
+            "MaxPooling2D 2x2",
+            "Conv2D 4f7x7",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 128relu",
+            "Dropout 0.2",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.13942826617043466,
+            0.9574000239372253
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 6,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D4f9x9MaxPooling2D2x2Conv2D4f9x9MaxPooling2D2x2FlattenDense128reluDropout0.2Dense10softmax/./",
+        "layers": [
+            "Conv2D 4f9x9",
+            "MaxPooling2D 2x2",
+            "Conv2D 4f9x9",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 128relu",
+            "Dropout 0.2",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.14982923149168492,
+            0.954200029373169
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 6,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D64f5x5MaxPooling2D2x2Conv2D64f5x5MaxPooling2D2x2FlattenDense128reluDropout0.2Dense10softmax/./",
+        "layers": [
+            "Conv2D 64f5x5",
+            "MaxPooling2D 2x2",
+            "Conv2D 64f5x5",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 128relu",
+            "Dropout 0.2",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.02079568397631665,
+            0.9930999875068665
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 6,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D64f7x7MaxPooling2D2x2Conv2D64f7x7MaxPooling2D2x2FlattenDense128reluDropout0.2Dense10softmax/./",
+        "layers": [
+            "Conv2D 64f7x7",
+            "MaxPooling2D 2x2",
+            "Conv2D 64f7x7",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 128relu",
+            "Dropout 0.2",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.029634156089479804,
+            0.9898999929428101
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 6,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D64f9x9MaxPooling2D2x2Conv2D64f9x9MaxPooling2D2x2FlattenDense128reluDropout0.2Dense10softmax/./",
+        "layers": [
+            "Conv2D 64f9x9",
+            "MaxPooling2D 2x2",
+            "Conv2D 64f9x9",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 128relu",
+            "Dropout 0.2",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.028165261337344417,
+            0.9912999868392944
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 6,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D4f3x3MaxPooling2D2x2Conv2D4f3x3MaxPooling2D2x2FlattenDense512reluDropout0.2Dense10softmax/./",
+        "layers": [
+            "Conv2D 4f3x3",
+            "MaxPooling2D 2x2",
+            "Conv2D 4f3x3",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 512relu",
+            "Dropout 0.2",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.05241324659050442,
+            0.9836999773979187
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 6,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D4f5x5MaxPooling2D2x2Conv2D4f5x5MaxPooling2D2x2FlattenDense512reluDropout0.2Dense10softmax/./",
+        "layers": [
+            "Conv2D 4f5x5",
+            "MaxPooling2D 2x2",
+            "Conv2D 4f5x5",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 512relu",
+            "Dropout 0.2",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.05134979037398007,
+            0.9850999712944031
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 6,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D4f7x7MaxPooling2D2x2Conv2D4f7x7MaxPooling2D2x2FlattenDense512reluDropout0.2Dense10softmax/./",
+        "layers": [
+            "Conv2D 4f7x7",
+            "MaxPooling2D 2x2",
+            "Conv2D 4f7x7",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 512relu",
+            "Dropout 0.2",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.12424357356335967,
+            0.9602000117301941
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 6,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D4f9x9MaxPooling2D2x2Conv2D4f9x9MaxPooling2D2x2FlattenDense512reluDropout0.2Dense10softmax/./",
+        "layers": [
+            "Conv2D 4f9x9",
+            "MaxPooling2D 2x2",
+            "Conv2D 4f9x9",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 512relu",
+            "Dropout 0.2",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.15301463124752046,
+            0.9524999856948853
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 6,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D64f3x3MaxPooling2D2x2Conv2D64f3x3MaxPooling2D2x2FlattenDense512reluDropout0.2Dense10softmax/./",
+        "layers": [
+            "Conv2D 64f3x3",
+            "MaxPooling2D 2x2",
+            "Conv2D 64f3x3",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 512relu",
+            "Dropout 0.2",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.022969010761380197,
+            0.9926999807357788
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 6,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D64f5x5MaxPooling2D2x2Conv2D64f5x5MaxPooling2D2x2FlattenDense512reluDropout0.2Dense10softmax/./",
+        "layers": [
+            "Conv2D 64f5x5",
+            "MaxPooling2D 2x2",
+            "Conv2D 64f5x5",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 512relu",
+            "Dropout 0.2",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.021784162371110142,
+            0.9929999709129333
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 6,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D64f7x7MaxPooling2D2x2Conv2D64f7x7MaxPooling2D2x2FlattenDense512reluDropout0.2Dense10softmax/./",
+        "layers": [
+            "Conv2D 64f7x7",
+            "MaxPooling2D 2x2",
+            "Conv2D 64f7x7",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 512relu",
+            "Dropout 0.2",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.025161696731190387,
+            0.9922999739646912
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 6,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D64f9x9MaxPooling2D2x2Conv2D64f9x9MaxPooling2D2x2FlattenDense512reluDropout0.2Dense10softmax/./",
+        "layers": [
+            "Conv2D 64f9x9",
+            "MaxPooling2D 2x2",
+            "Conv2D 64f9x9",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 512relu",
+            "Dropout 0.2",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.02721370278215618,
+            0.9909999966621399
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 6,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D4f3x3MaxPooling2D2x2Conv2D4f3x3MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Conv2D 4f3x3",
+            "MaxPooling2D 2x2",
+            "Conv2D 4f3x3",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.04752635489157401,
+            0.9850999712944031
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 6,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D4f5x5MaxPooling2D2x2Conv2D4f5x5MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Conv2D 4f5x5",
+            "MaxPooling2D 2x2",
+            "Conv2D 4f5x5",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.046593895665335006,
+            0.9854999780654907
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 6,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D4f7x7MaxPooling2D2x2Conv2D4f7x7MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Conv2D 4f7x7",
+            "MaxPooling2D 2x2",
+            "Conv2D 4f7x7",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.09452790902713314,
+            0.9700000286102295
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 6,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D4f9x9MaxPooling2D2x2Conv2D4f9x9MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Conv2D 4f9x9",
+            "MaxPooling2D 2x2",
+            "Conv2D 4f9x9",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.13044012053534387,
+            0.9592999815940857
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 6,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D64f3x3MaxPooling2D2x2Conv2D64f3x3MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Conv2D 64f3x3",
+            "MaxPooling2D 2x2",
+            "Conv2D 64f3x3",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.025264695534776182,
+            0.993399977684021
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 6,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D64f5x5MaxPooling2D2x2Conv2D64f5x5MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Conv2D 64f5x5",
+            "MaxPooling2D 2x2",
+            "Conv2D 64f5x5",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.03033567392945406,
+            0.9908000230789185
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 6,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D64f7x7MaxPooling2D2x2Conv2D64f7x7MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Conv2D 64f7x7",
+            "MaxPooling2D 2x2",
+            "Conv2D 64f7x7",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.03629967315120648,
+            0.989300012588501
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 6,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D64f9x9MaxPooling2D2x2Conv2D64f9x9MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Conv2D 64f9x9",
+            "MaxPooling2D 2x2",
+            "Conv2D 64f9x9",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.02616666887803076,
+            0.9918000102043152
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 6,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f3x3MaxPooling2D2x2Conv2D8f3x3MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Conv2D 8f3x3",
+            "MaxPooling2D 2x2",
+            "Conv2D 8f3x3",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.040038261869939744,
+            0.9873999953269958
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 6,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f5x5MaxPooling2D2x2Conv2D8f5x5MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Conv2D 8f5x5",
+            "MaxPooling2D 2x2",
+            "Conv2D 8f5x5",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.03854567777875345,
+            0.9873999953269958
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 6,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f7x7MaxPooling2D2x2Conv2D8f7x7MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Conv2D 8f7x7",
+            "MaxPooling2D 2x2",
+            "Conv2D 8f7x7",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.05549939900121535,
+            0.9825000166893005
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 6,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f9x9MaxPooling2D2x2Conv2D8f9x9MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Conv2D 8f9x9",
+            "MaxPooling2D 2x2",
+            "Conv2D 8f9x9",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.049227847645734436,
+            0.9839000105857849
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 6,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D16f3x3MaxPooling2D2x2Conv2D16f3x3MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Conv2D 16f3x3",
+            "MaxPooling2D 2x2",
+            "Conv2D 16f3x3",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.026352824125047483,
+            0.9922999739646912
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 6,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D16f5x5MaxPooling2D2x2Conv2D16f5x5MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Conv2D 16f5x5",
+            "MaxPooling2D 2x2",
+            "Conv2D 16f5x5",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.030201272928651088,
+            0.9904000163078308
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 6,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D16f7x7MaxPooling2D2x2Conv2D16f7x7MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Conv2D 16f7x7",
+            "MaxPooling2D 2x2",
+            "Conv2D 16f7x7",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.041273390912648755,
+            0.9876999855041504
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 6,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D16f9x9MaxPooling2D2x2Conv2D16f9x9MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Conv2D 16f9x9",
+            "MaxPooling2D 2x2",
+            "Conv2D 16f9x9",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.03591543165759649,
+            0.9896000027656555
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 6,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D32f3x3MaxPooling2D2x2Conv2D32f3x3MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Conv2D 32f3x3",
+            "MaxPooling2D 2x2",
+            "Conv2D 32f3x3",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.029797424608494112,
+            0.989799976348877
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 6,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D32f5x5MaxPooling2D2x2Conv2D32f5x5MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Conv2D 32f5x5",
+            "MaxPooling2D 2x2",
+            "Conv2D 32f5x5",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.026550733794787812,
+            0.9914000034332275
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 6,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D32f7x7MaxPooling2D2x2Conv2D32f7x7MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Conv2D 32f7x7",
+            "MaxPooling2D 2x2",
+            "Conv2D 32f7x7",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.027581663886990283,
+            0.9911999702453613
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 6,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D32f9x9MaxPooling2D2x2Conv2D32f9x9MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Conv2D 32f9x9",
+            "MaxPooling2D 2x2",
+            "Conv2D 32f9x9",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.04376674341102771,
+            0.987500011920929
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 6,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e8b256mConv2D8f3x3MaxPooling2D2x2Conv2D8f3x3MaxPooling2D2x2FlattenDense512reluDropout0.2Dense10softmax/./",
+        "layers": [
+            "Conv2D 8f3x3",
+            "MaxPooling2D 2x2",
+            "Conv2D 8f3x3",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 512relu",
+            "Dropout 0.2",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.047440373879624534,
+            0.9839000105857849
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 8,
+        "batch_size": 256
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e8b256mConv2D8f5x5MaxPooling2D2x2Conv2D8f5x5MaxPooling2D2x2FlattenDense512reluDropout0.2Dense10softmax/./",
+        "layers": [
+            "Conv2D 8f5x5",
+            "MaxPooling2D 2x2",
+            "Conv2D 8f5x5",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 512relu",
+            "Dropout 0.2",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.04227169412375661,
+            0.9857000112533569
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 8,
+        "batch_size": 256
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e8b256mConv2D8f7x7MaxPooling2D2x2Conv2D8f7x7MaxPooling2D2x2FlattenDense512reluDropout0.2Dense10softmax/./",
+        "layers": [
+            "Conv2D 8f7x7",
+            "MaxPooling2D 2x2",
+            "Conv2D 8f7x7",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 512relu",
+            "Dropout 0.2",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.06963228666391223,
+            0.9782999753952026
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 8,
+        "batch_size": 256
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e8b256mConv2D8f9x9MaxPooling2D2x2Conv2D8f9x9MaxPooling2D2x2FlattenDense512reluDropout0.2Dense10softmax/./",
+        "layers": [
+            "Conv2D 8f9x9",
+            "MaxPooling2D 2x2",
+            "Conv2D 8f9x9",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 512relu",
+            "Dropout 0.2",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.0700107332330197,
+            0.9793999791145325
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 8,
+        "batch_size": 256
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D2f3x3MaxPooling2D2x2Conv2D2f3x3MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Conv2D 2f3x3",
+            "MaxPooling2D 2x2",
+            "Conv2D 2f3x3",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.07361537541509607,
+            0.9763000011444092
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 6,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D2f5x5MaxPooling2D2x2Conv2D2f5x5MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Conv2D 2f5x5",
+            "MaxPooling2D 2x2",
+            "Conv2D 2f5x5",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.07607474336591549,
+            0.9743000268936157
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 6,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D2f7x7MaxPooling2D2x2Conv2D2f7x7MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Conv2D 2f7x7",
+            "MaxPooling2D 2x2",
+            "Conv2D 2f7x7",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.2283870904684067,
+            0.9293000102043152
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 6,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D2f9x9MaxPooling2D2x2Conv2D2f9x9MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Conv2D 2f9x9",
+            "MaxPooling2D 2x2",
+            "Conv2D 2f9x9",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.6984122203350067,
+            0.763700008392334
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 6,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e8b256mConv2D2f3x3MaxPooling2D2x2Conv2D2f3x3MaxPooling2D2x2FlattenDense128reluDropout0.2Dense10softmax/./",
+        "layers": [
+            "Conv2D 2f3x3",
+            "MaxPooling2D 2x2",
+            "Conv2D 2f3x3",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 128relu",
+            "Dropout 0.2",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.13876684130579234,
+            0.9575999975204468
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 8,
+        "batch_size": 256
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e10b256mConv2D2f3x3MaxPooling2D2x2Conv2D2f3x3MaxPooling2D2x2FlattenDense128reluDropout0.2Dense10softmax/./",
+        "layers": [
+            "Conv2D 2f3x3",
+            "MaxPooling2D 2x2",
+            "Conv2D 2f3x3",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 128relu",
+            "Dropout 0.2",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.1259813091199845,
+            0.9611999988555908
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 10,
+        "batch_size": 256
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e10b256mConv2D2f5x5MaxPooling2D2x2Conv2D2f5x5MaxPooling2D2x2FlattenDense128reluDropout0.2Dense10softmax/./",
+        "layers": [
+            "Conv2D 2f5x5",
+            "MaxPooling2D 2x2",
+            "Conv2D 2f5x5",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 128relu",
+            "Dropout 0.2",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.10318693193159997,
+            0.9653000235557556
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 10,
+        "batch_size": 256
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e10b128mConv2D2f3x3MaxPooling2D2x2Conv2D2f3x3MaxPooling2D2x2FlattenDense128reluDropout0.2Dense10softmax/./",
+        "layers": [
+            "Conv2D 2f3x3",
+            "MaxPooling2D 2x2",
+            "Conv2D 2f3x3",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 128relu",
+            "Dropout 0.2",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.10873920012749731,
+            0.9672999978065491
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 10,
+        "batch_size": 128
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e10b128mConv2D2f5x5MaxPooling2D2x2Conv2D2f5x5MaxPooling2D2x2FlattenDense128reluDropout0.2Dense10softmax/./",
+        "layers": [
+            "Conv2D 2f5x5",
+            "MaxPooling2D 2x2",
+            "Conv2D 2f5x5",
+            "MaxPooling2D 2x2",
+            "Flatten ",
+            "Dense 128relu",
+            "Dropout 0.2",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.12232022242248058,
+            0.9627000093460083
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 10,
+        "batch_size": 128
+    },
+    {
+        "sub_dir": "./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f3x3AveragePooling2DConv2D8f3x3AveragePooling2DFlattenDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Conv2D 8f3x3",
+            "AveragePooling2D ",
+            "Conv2D 8f3x3",
+            "AveragePooling2D ",
+            "Flatten ",
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.042786382615560434,
+            0.9858999848365784
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "Adamax",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.002,
+        "nb_epochs": 6,
+        "batch_size": 64
     }
 ]

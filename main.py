@@ -1,6 +1,7 @@
 import os
 
 import tests as t
+import convtests as ct
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # Supress warning and informational messages
 
@@ -39,7 +40,8 @@ tf.compat.v1.keras.backend.set_session(sess)
 
 
 def main():
-    t.test()
+    # t.test()
+    ct.test()
     exit(0)
 
 

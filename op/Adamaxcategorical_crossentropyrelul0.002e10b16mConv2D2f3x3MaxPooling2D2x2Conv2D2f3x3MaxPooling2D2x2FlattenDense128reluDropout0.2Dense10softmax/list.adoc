@@ -1,0 +1,75 @@
+# tag::cmatrix[]
+.Confusion Matrix
+image::./op/Adamaxcategorical_crossentropyrelul0.002e10b16mConv2D2f3x3MaxPooling2D2x2Conv2D2f3x3MaxPooling2D2x2FlattenDense128reluDropout0.2Dense10softmax/cmatrix.png[Confusion Matrix]
+# end::cmatrix[]
+
+# tag::correct[]
+.Correctly classified samples
+image::./op/Adamaxcategorical_crossentropyrelul0.002e10b16mConv2D2f3x3MaxPooling2D2x2Conv2D2f3x3MaxPooling2D2x2FlattenDense128reluDropout0.2Dense10softmax/correct.png[Correctly classified samples]
+# end::correct[]
+
+# tag::incorrect[]
+.Incorrectly classified samples
+image::./op/Adamaxcategorical_crossentropyrelul0.002e10b16mConv2D2f3x3MaxPooling2D2x2Conv2D2f3x3MaxPooling2D2x2FlattenDense128reluDropout0.2Dense10softmax/incorrect.png[Incorrectly classified samples]
+# end::incorrect[]
+
+# tag::metrics[]
+.Metrics
+image::./op/Adamaxcategorical_crossentropyrelul0.002e10b16mConv2D2f3x3MaxPooling2D2x2Conv2D2f3x3MaxPooling2D2x2FlattenDense128reluDropout0.2Dense10softmax/metrics.png[Metrics]
+# end::metrics[]
+
+# tag::model[]
+.Model Summary
+image::./op/Adamaxcategorical_crossentropyrelul0.002e10b16mConv2D2f3x3MaxPooling2D2x2Conv2D2f3x3MaxPooling2D2x2FlattenDense128reluDropout0.2Dense10softmax/model.png[Model Summary]
+# end::model[]
+
+# tag::precision_recall_curve[]
+.Precision-Recall
+image::./op/Adamaxcategorical_crossentropyrelul0.002e10b16mConv2D2f3x3MaxPooling2D2x2Conv2D2f3x3MaxPooling2D2x2FlattenDense128reluDropout0.2Dense10softmax/precision_recall_curve.png[Precision-Recall]
+# end::precision_recall_curve[]
+
+# tag::roc_curve[]
+.ROC
+image::./op/Adamaxcategorical_crossentropyrelul0.002e10b16mConv2D2f3x3MaxPooling2D2x2Conv2D2f3x3MaxPooling2D2x2FlattenDense128reluDropout0.2Dense10softmax/roc_curve.png[ROC]
+# end::roc_curve[]
+
+# tag::layer[]
+[source, json]
+----
+[
+    "Conv2D 2f3x3",
+    "MaxPooling2D 2x2",
+    "Conv2D 2f3x3",
+    "MaxPooling2D 2x2",
+    "Flatten ",
+    "Dense 128relu",
+    "Dropout 0.2",
+    "Dense 10softmax"
+]
+----
+# end::layer[]
+
+# tag::config[]
+[source, json]
+----
+{
+    "loss_func": "categorical_crossentropy",
+    "optimizer": "Adamax",
+    "activation": "relu",
+    "lr": 0.002,
+    "nb_epochs": 10,
+    "batch_size": 16
+}
+----
+# end::config[]
+
+# tag::result[]
+[source, json]
+----
+{
+    "loss": 0.0885398499649018,
+    "categorical_accuracy": 0.9726999998092651
+}
+----
+# end::result[]
+

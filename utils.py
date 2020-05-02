@@ -64,7 +64,7 @@ def dump_json(cfg):
                 jobj.append(dump_dict)
     except FileNotFoundError:
         jobj.append(dump_dict)
-
+    pprint(dump_dict)
     with open(op.get_dump_file_name(cfg), 'w', encoding='utf-8') as dump_file:
         json.dump(jobj, dump_file, ensure_ascii=False, indent=4)
         dump_file.write('\n')
