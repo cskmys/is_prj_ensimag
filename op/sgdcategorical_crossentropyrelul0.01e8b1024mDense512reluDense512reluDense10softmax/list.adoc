@@ -1,0 +1,70 @@
+# tag::cmatrix[]
+.Confusion Matrix
+image::./op/sgdcategorical_crossentropyrelul0.01e8b1024mDense512reluDense512reluDense10softmax/cmatrix.png[Confusion Matrix]
+# end::cmatrix[]
+
+# tag::correct[]
+.Correctly classified samples
+image::./op/sgdcategorical_crossentropyrelul0.01e8b1024mDense512reluDense512reluDense10softmax/correct.png[Correctly classified samples]
+# end::correct[]
+
+# tag::incorrect[]
+.Incorrectly classified samples
+image::./op/sgdcategorical_crossentropyrelul0.01e8b1024mDense512reluDense512reluDense10softmax/incorrect.png[Incorrectly classified samples]
+# end::incorrect[]
+
+# tag::metrics[]
+.Metrics
+image::./op/sgdcategorical_crossentropyrelul0.01e8b1024mDense512reluDense512reluDense10softmax/metrics.png[Metrics]
+# end::metrics[]
+
+# tag::model[]
+.Model Summary
+image::./op/sgdcategorical_crossentropyrelul0.01e8b1024mDense512reluDense512reluDense10softmax/model.png[Model Summary]
+# end::model[]
+
+# tag::precision_recall_curve[]
+.Precision-Recall
+image::./op/sgdcategorical_crossentropyrelul0.01e8b1024mDense512reluDense512reluDense10softmax/precision_recall_curve.png[Precision-Recall]
+# end::precision_recall_curve[]
+
+# tag::roc_curve[]
+.ROC
+image::./op/sgdcategorical_crossentropyrelul0.01e8b1024mDense512reluDense512reluDense10softmax/roc_curve.png[ROC]
+# end::roc_curve[]
+
+# tag::layer[]
+[source, json]
+----
+[
+    "Dense 512relu",
+    "Dense 512relu",
+    "Dense 10softmax"
+]
+----
+# end::layer[]
+
+# tag::config[]
+[source, json]
+----
+{
+    "loss_func": "categorical_crossentropy",
+    "optimizer": "sgd",
+    "activation": "relu",
+    "lr": 0.01,
+    "nb_epochs": 8,
+    "batch_size": 1024
+}
+----
+# end::config[]
+
+# tag::result[]
+[source, json]
+----
+{
+    "loss": 0.5130762873649597,
+    "categorical_accuracy": 0.8769999742507935
+}
+----
+# end::result[]
+

@@ -4,7 +4,6 @@ from enum import Enum
 import numpy as np
 import gc as pygc
 
-from keras.callbacks import Callback
 from keras.models import Model
 
 
@@ -186,7 +185,7 @@ class Cfg:
         y_test, y_pred = self.get_test_eval_op_params()
         return x_test, y_test, y_pred
 
-    def get_test_eval_metrics(self):
+    def get_train_test_metrics(self):
         return self.prj.data.out.hist
 
     def set_eval_metrics(self, hist):

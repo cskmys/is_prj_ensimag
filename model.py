@@ -51,7 +51,6 @@ class Model(ABC):
         file_nam = op.get_full_file_nam(self.cfg, self.cfg.prj.files.model)
         if os.path.exists(file_nam):
             self.cfg.prj.model.nn = km.load_model(file_nam)
-            print('Model available and loaded')
         else:
             self._mk_model()
             self._compile_model()

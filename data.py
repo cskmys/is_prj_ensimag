@@ -17,7 +17,7 @@ def get_mnist_data(cfg):
 
 def plt_metrics(cfg):
     fig = plt.figure()
-    hist = cfg.get_test_eval_metrics()
+    hist = cfg.get_train_test_metrics()
     metrics = list(hist.history.keys())
     nb_metrics = len(metrics) // 2
     for i in range(nb_metrics):

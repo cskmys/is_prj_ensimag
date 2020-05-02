@@ -1,13 +1,228 @@
-// 1-2: Conf Matrix
-// 3-4: Correct
-// 5-6: Incorrect
-// 7-8: Metrics
-// 9-10: Model
-// 11-12: Precision-Recall
-// 13-14: ROC
-// 15-18: Layers
+= Report
 
-include::./op/sgdcategorical_crossentropyrelul0.01e2b8192mDense512reluDense10softmax/list.adoc[lines=1;7..-1]
+== Abbreviations used
 
-We start our study with a very simple network of following configuration:
 
+== Introduction
+
+=== Input
+We use each pixel(normalized) of 2d Gray scale image as an input to our Neural Network.
+Since, the images from MNIST database are of 28x28 pixels, we have 784 inputs.
+
+=== Output
+The outputs labels from MNIST database are converted to one-hot encoding.
+From out network, for each class we receive the probability values which we further process it to get
+various metrics such as accuracy, ROC, Precision-Recall, Confusion Matrix etc.
+To avoid, unnecessary blotting of the report, we have the plots whenever there's something interesting.
+
+=== Training Procedure
+Out of 70,000 images from MNSIT database, we use 60,000 images as training samples.
+
+=== Testing Procedure
+Out of 70,000 images from MNSIT database, we use 10,000 images as testing samples.
+
+=== Evaluation Procedure
+Since we have multi-class classification problem, we use *categorical_accuracy*.
+It checks to see if the index of the maximal true value is equal to the index of the maximal predicted value.
+
+[NOTE]
+====
+We can use this as loss function as well. We experiment with various loss functions, but we use this as an
+overall metric to compare models and configurations.
+====
+
+== Baseline
+We start our study with a very simple network having just one hidden layer
+
+include::./op/sgdcategorical_crossentropyrelul0.01e4b8192mDense512reluDense10softmax/list.adoc[tags=model]
+
+=== Number of neurons in hidden layer
+As starting point, the common literature on online suggests:
+----
+Number of Outputs <= #neurons <= Number of inputs
+#neurons ~ Sum(Number of inputs, Number of Outputs) x 2/3
+----
+In our case, Sum(Number of inputs, Number of Outputs) x 2/3 = 529.33 ~ 530
+Moreover, for reasons of speed, it is advised to use powers of 2.
+Hence, an ideal value would be: 512. However, to be sure we test with both 256 and 512 neurons
+
+While we evaluate number of neurons, we keep the following parameters constant:
+include::./op/sgdcategorical_crossentropyrelul0.01e4b8192mDense512reluDense10softmax/list.adoc[tags=config]
+
+==== Results
+* 256 Neurons
++
+include::./op/sgdcategorical_crossentropyrelul0.01e4b8192mDense256reluDense10softmax/list.adoc[tags=result]
+* 512 Neurons
++
+include::./op/sgdcategorical_crossentropyrelul0.01e4b8192mDense512reluDense10softmax/list.adoc[tags=result]
+
+We see a big increase in accuracy by choosing 512 neurons instead of 256 and a reduction in loss.
+Having more number of neurons means more features can be learnt.
+To test that hypothesis, when we fed the test data in same order and picked the 1st 9 errors under both the configuration:
+
+* 256 Neurons:
++
+include::./op/sgdcategorical_crossentropyrelul0.01e4b8192mDense256reluDense10softmax/list.adoc[tags=incorrect]
+
+* 512 Neurons:
++
+include::./op/sgdcategorical_crossentropyrelul0.01e4b8192mDense512reluDense10softmax/list.adoc[tags=incorrect]
+
+As we see 256 neuron network does more errors of same type compared to that of 512.
+
+With 128 Neurons:
+
+include::./op/sgdcategorical_crossentropyrelul0.01e4b8192mDense128reluDense10softmax/list.adoc[tags=incorrect]
+We clearly observe that with 128, we find more errors of same type.
+Therefore, by __having more number of neurons more features can be learnt__.
+Hence, for *upcoming experiments we use 512 neurons*.
+
+=== Number of hidden layers
+One of the thumb rules used in industry to judge number of hidden layers:
+----
+0: linearly separable
+1: continuous functions
+2: arbitrary decision boundary
+> 2: complex representations
+----
+Our data is neither linearly separable nor continuous, hence 1 layer as in last section may not be a good choice.
+Hence, in this section we try 2, 3 and 4 layers.
+
+For all the tests we keep the following configuration:
+include::./op/sgdcategorical_crossentropyrelul0.01e4b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=config]
+
+==== Results
+* 2 hidden Layers
+include::./op/sgdcategorical_crossentropyrelul0.01e4b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=result]
+* 3 hidden Layers
+include::./op/sgdcategorical_crossentropyrelul0.01e4b8192mDense512reluDense512reluDense512reluDense10softmax/list.adoc[tags=result]
+* 4 hidden Layers
+include::./op/sgdcategorical_crossentropyrelul0.01e4b8192mDense512reluDense512reluDense512reluDense512reluDense10softmax/list.adoc[tags=result]
+
+We can see that having anything beyond 2 will reduce the accuracy. In fact, the loss was highest with 4 layers.
+When we have more layers, the model learns 'fast'(premature) and hence over-fits the data.
+
+If we examine the metrics plot:
+
+* 2 hidden Layers
+
+include::./op/sgdcategorical_crossentropyrelul0.01e4b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=metrics]
+* 3 hidden Layers
+
+include::./op/sgdcategorical_crossentropyrelul0.01e4b8192mDense512reluDense512reluDense512reluDense10softmax/list.adoc[tags=metrics]
+* 4 hidden Layers
+
+include::./op/sgdcategorical_crossentropyrelul0.01e4b8192mDense512reluDense512reluDense512reluDense512reluDense10softmax/list.adoc[tags=metrics]
+
+If we observe the *Categorical Accuracy* plots, the more the number of layers, sooner and
+sharper the change in slope occurs. This could indicate that the model is learning too fast and over-fitting.
+
+By increasing the number of epochs over-fitting is bound to happen for models that are under going the problem at the
+current rate.
+
+We try to check the impact by reducing the number of epochs to 2.
+
+* 2 hidden Layers
+
+include::./op/sgdcategorical_crossentropyrelul0.01e2b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=result]
+* 3 hidden Layers
+
+include::./op/sgdcategorical_crossentropyrelul0.01e2b8192mDense512reluDense512reluDense512reluDense10softmax/list.adoc[tags=result]
+* 4 hidden Layers
+
+include::./op/sgdcategorical_crossentropyrelul0.01e2b8192mDense512reluDense512reluDense512reluDense512reluDense10softmax/list.adoc[tags=result]
+
+Even if we reduce the number of epochs, 2 layers perform better.
+Also, 2 layers is computationally less bulky as well.
+So, __having more layers will not necessarily improve accuracy.__
+Therefore, *we will be using 2 hidden layers for all the upcoming tests*
+
+=== Number of epochs
+In the previous section we saw results for 2 hidden layers:
+
+* 2 epochs
+
+include::./op/sgdcategorical_crossentropyrelul0.01e2b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=result]
+
+* 4 epochs
+
+include::./op/sgdcategorical_crossentropyrelul0.01e4b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=result]
+
+The model and config that we carry from previous section:
+
+include::./op/sgdcategorical_crossentropyrelul0.01e2b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=config]
+
+include::./op/sgdcategorical_crossentropyrelul0.01e2b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=model]
+
+Now under the same configuration, we experiment with 8, 16, 32, 64 .... until we cross atleast 90% accuracy
+
+==== Results
+The plot below is displays accuracy and loss on testing data by networks which are trained for:
+1, 2, 4, 8, 16, 32, 64, 128 and 256 epochs
+
+include::./op/sgdcategorical_crossentropyrelul0.01e256b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=special]
+
+As we can see from the graph, though we train the model each time with double the number of epochs as before,
+we don't necessarily obtain a big increase as we go for higher values.
+Below is the data of 3 of the models trained under various epochs:
+
+* 64 epochs
+
+include::./op/sgdcategorical_crossentropyrelul0.01e64b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=result]
+
+* 128 epochs
+
+include::./op/sgdcategorical_crossentropyrelul0.01e128b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=result]
+
+* 256 epochs
+
+include::./op/sgdcategorical_crossentropyrelul0.01e256b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=result]
+
+Considering the above trend, to reach accuracy > 95%, we'll need to train model for 1024 or maybe 2056 epochs.
+
+If we consider the training and validation metrics plot of 256 epochs:
+
+include::./op/sgdcategorical_crossentropyrelul0.01e256b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=metrics]
+
+We can see that accuracy for training and testing data converge very early and
+hence, just increasing the number of epochs may not be a good idea.
+
+So, moving ahead maybe we can take 2 epochs: 32 and 64 to experiment.
+Hence, __beyond a certain point, the increase in accuracy will be much lesser in relation to
+increase in number of epochs__.
+
+If we consider the confusion matrix for 2 epochs of our interest:
+* 32 epochs
+
+include::./op/sgdcategorical_crossentropyrelul0.01e32b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=cmatrix]
+
+* 64 epochs
+
+include::./op/sgdcategorical_crossentropyrelul0.01e64b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=cmatrix]
+
+We can see that model quickly learns to recognize 0, 1 and 6 while it has harder time recognizing 2, 3, 5 and 9
+
+If we see the incorrect outputs:
+* 32 epochs
+
+include::./op/sgdcategorical_crossentropyrelul0.01e32b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=incorrect]
+
+* 64 epochs
+
+include::./op/sgdcategorical_crossentropyrelul0.01e64b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=incorrect]
+
+
+
+=== Batch size
+We started our experimentation with an arbitrary huge batch size.
+
+At 16 epochs:
+
+include::./op/sgdcategorical_crossentropyrelul0.01e16b1024mDense512reluDense512reluDense10softmax/list.adoc[tags=metrics]
+include::./op/sgdcategorical_crossentropyrelul0.01e16b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=metrics]
+
+At 32 epochs:
+
+include::./op/sgdcategorical_crossentropyrelul0.01e32b1024mDense512reluDense512reluDense10softmax/list.adoc[tags=metrics]
+include::./op/sgdcategorical_crossentropyrelul0.01e32b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=metrics]
