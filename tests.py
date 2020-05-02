@@ -32,17 +32,17 @@ def nb_layers_tst(lr, optimizer, loss_func, activation, nb_epochs, batch_siz):
 
     ann = m.ANN(lr, optimizer, loss_func, activation, nb_epochs, batch_siz)
     L = l.Layers(ann.cfg)
-    layers = [L.IpDense(512), L.IpDense(512), L.OpDense()]
+    layers = [L.IpDense(512), L.HiddenDense(512), L.OpDense()]
     run_test_suite(ann, layers)
 
     ann = m.ANN(lr, optimizer, loss_func, activation, nb_epochs, batch_siz)
     L = l.Layers(ann.cfg)
-    layers = [L.IpDense(512), L.IpDense(512), L.IpDense(512), L.OpDense()]
+    layers = [L.IpDense(512), L.HiddenDense(512), L.HiddenDense(512), L.OpDense()]
     run_test_suite(ann, layers)
 
     ann = m.ANN(lr, optimizer, loss_func, activation, nb_epochs, batch_siz)
     L = l.Layers(ann.cfg)
-    layers = [L.IpDense(512), L.IpDense(512), L.IpDense(512), L.IpDense(512), L.OpDense()]
+    layers = [L.IpDense(512), L.HiddenDense(512), L.HiddenDense(512), L.HiddenDense(512), L.OpDense()]
     run_test_suite(ann, layers)
 
 
@@ -64,8 +64,8 @@ def nb_neurons_tst(lr, optimizer, loss_func, activation, nb_epochs, batch_siz):
 
 
 def nb_layers_with_epochs_tst(lr, optimizer, loss_func, nb_epochs, activation, batch_siz):
-    nb_layers_tst(lr, optimizer, loss_func, activation, nb_epochs, batch_siz)
-    nb_layers_tst(lr, optimizer, loss_func, activation, nb_epochs * 2, batch_siz)
+    for i in range(4):
+        nb_layers_tst(lr, optimizer, loss_func, activation, nb_epochs ** i, batch_siz)
 
 
 def nb_epochs_tst(lr, optimizer, loss_func, activation, batch_siz):
@@ -78,7 +78,7 @@ def nb_epochs_tst(lr, optimizer, loss_func, activation, batch_siz):
         nb_epochs = 2 ** i
         ann = m.ANN(lr, optimizer, loss_func, activation, nb_epochs, batch_siz)
         L = l.Layers(ann.cfg)
-        layers = [L.IpDense(512), L.IpDense(512), L.OpDense()]
+        layers = [L.IpDense(512), L.HiddenDense(512), L.OpDense()]
         run_test(ann, layers)
         res_dict = ut.get_res_dict(ann.cfg)
         res_dict[nb_epochs_key] = nb_epochs
@@ -106,13 +106,23 @@ def nb_epochs_tst(lr, optimizer, loss_func, activation, batch_siz):
         adoc_fil.write(adoc_op)
 
 
+def nb_batches_tst(lr, optimizer, loss_func, nb_epochs, activation):
+    for i in range(9):
+        batch_siz = 2 ** (i+5)
+        ann = m.ANN(lr, optimizer, loss_func, activation, nb_epochs, batch_siz)
+        L = l.Layers(ann.cfg)
+        layers = [L.IpDense(512), L.HiddenDense(512), L.OpDense()]
+        run_test_suite(ann, layers)
+
+
 def test():
     # nb_neurons_tst(lr=0.01, optimizer='sgd', loss_func='categorical_crossentropy', activation='relu', nb_epochs=4, batch_siz=8 * 1024)
     # nb_layers_tst(lr=0.01, optimizer='sgd', loss_func='categorical_crossentropy', activation='relu', nb_epochs=4, batch_siz=8 * 1024)
     # nb_layers_with_epochs_tst(lr=0.01, optimizer='sgd', loss_func='categorical_crossentropy', nb_epochs=2, activation='relu', batch_siz=8 * 1024)
     # nb_epochs_tst(lr=0.01, optimizer='sgd', loss_func='categorical_crossentropy', activation='relu', batch_siz=8 * 1024)
-    nb_epochs_tst(lr=0.01, optimizer='sgd', loss_func='categorical_crossentropy', activation='relu', batch_siz=1024)
-
+    # nb_batches_tst(lr=0.01, optimizer='sgd', loss_func='categorical_crossentropy',  nb_epochs=16, activation='relu')
+    nb_batches_tst(lr=0.01, optimizer='sgd', loss_func='categorical_crossentropy',  nb_epochs=32, activation='relu')
+    nb_batches_tst(lr=0.01, optimizer='sgd', loss_func='categorical_crossentropy',  nb_epochs=64, activation='relu')
 # for i in range(5):
 #
 #     ann = m.ANN(lr=0.01, optimizer='sgd', loss_func='categorical_crossentropy', activation='relu', nb_epochs=2, batch_siz=8 * 1024)

@@ -63,13 +63,16 @@ To test that hypothesis, when we fed the test data in same order and picked the 
 
 * 256 Neurons:
 +
-include::./op/sgdcategorical_crossentropyrelul0.01e4b8192mDense256reluDense10softmax/list.adoc[tags=incorrect]
+include::./op/sgdcategorical_crossentropyrelul0.01e4b8192mDense256reluDense10softmax/list.adoc[tags=roc_curve]
 
 * 512 Neurons:
 +
-include::./op/sgdcategorical_crossentropyrelul0.01e4b8192mDense512reluDense10softmax/list.adoc[tags=incorrect]
+include::./op/sgdcategorical_crossentropyrelul0.01e4b8192mDense512reluDense10softmax/list.adoc[tags=roc_curve]
 
-As we see 256 neuron network does more errors of same type compared to that of 512.
+As we see one of the ROC curves of 256 neuron network goes below the diagonal, from image we can infer that model
+is not able to confidently decide 'not 9'.
+hence it's better to have 512 neurons than 256.
+
 
 With 128 Neurons:
 
@@ -100,9 +103,6 @@ include::./op/sgdcategorical_crossentropyrelul0.01e4b8192mDense512reluDense512re
 * 4 hidden Layers
 include::./op/sgdcategorical_crossentropyrelul0.01e4b8192mDense512reluDense512reluDense512reluDense512reluDense10softmax/list.adoc[tags=result]
 
-We can see that having anything beyond 2 will reduce the accuracy. In fact, the loss was highest with 4 layers.
-When we have more layers, the model learns 'fast'(premature) and hence over-fits the data.
-
 If we examine the metrics plot:
 
 * 2 hidden Layers
@@ -115,56 +115,69 @@ include::./op/sgdcategorical_crossentropyrelul0.01e4b8192mDense512reluDense512re
 
 include::./op/sgdcategorical_crossentropyrelul0.01e4b8192mDense512reluDense512reluDense512reluDense512reluDense10softmax/list.adoc[tags=metrics]
 
-If we observe the *Categorical Accuracy* plots, the more the number of layers, sooner and
-sharper the change in slope occurs. This could indicate that the model is learning too fast and over-fitting.
+The validation accuracy is higher than the training accuracy and also the validation loss is lower than
+the training loss. This suggests under-fitting. which we will need to eliminate.
+Since the gap between the training and validation plots becomes more pronounced for higher number of hidden layers,
+we can say that when we have more layers, the model learns 'fast'(premature) and hence under-fits the data.
 
-By increasing the number of epochs over-fitting is bound to happen for models that are under going the problem at the
-current rate.
-
-We try to check the impact by reducing the number of epochs to 2.
+Maybe if we train the model for more longer time, will more layers provide better results?:
+We try to check the impact by increasing the number of epochs to 8:
 
 * 2 hidden Layers
 
-include::./op/sgdcategorical_crossentropyrelul0.01e2b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=result]
+include::./op/sgdcategorical_crossentropyrelul0.01e8b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=result]
 * 3 hidden Layers
 
-include::./op/sgdcategorical_crossentropyrelul0.01e2b8192mDense512reluDense512reluDense512reluDense10softmax/list.adoc[tags=result]
+include::./op/sgdcategorical_crossentropyrelul0.01e8b8192mDense512reluDense512reluDense512reluDense10softmax/list.adoc[tags=result]
 * 4 hidden Layers
 
-include::./op/sgdcategorical_crossentropyrelul0.01e2b8192mDense512reluDense512reluDense512reluDense512reluDense10softmax/list.adoc[tags=result]
+include::./op/sgdcategorical_crossentropyrelul0.01e8b8192mDense512reluDense512reluDense512reluDense512reluDense10softmax/list.adoc[tags=result]
 
-Even if we reduce the number of epochs, 2 layers perform better.
-Also, 2 layers is computationally less bulky as well.
+Even if we increase the number of epochs, 2 layers perform better.
+Also, 2 layers is computationally less heavy as well.
 So, __having more layers will not necessarily improve accuracy.__
 Therefore, *we will be using 2 hidden layers for all the upcoming tests*
 
 === Number of epochs
 In the previous section we saw results for 2 hidden layers:
 
-* 2 epochs
-
-include::./op/sgdcategorical_crossentropyrelul0.01e2b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=result]
-
 * 4 epochs
 
 include::./op/sgdcategorical_crossentropyrelul0.01e4b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=result]
 
+* 8 epochs
+
+include::./op/sgdcategorical_crossentropyrelul0.01e8b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=result]
+
 The model and config that we carry from previous section:
 
-include::./op/sgdcategorical_crossentropyrelul0.01e2b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=config]
+include::./op/sgdcategorical_crossentropyrelul0.01e4b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=config]
 
-include::./op/sgdcategorical_crossentropyrelul0.01e2b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=model]
+include::./op/sgdcategorical_crossentropyrelul0.01e4b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=model]
 
-Now under the same configuration, we experiment with 8, 16, 32, 64 .... until we cross atleast 90% accuracy
+Now under the same configuration, we experiment with 8, 16, 32, 64 .... until, if possible, we are able to solve
+under-fitting.
 
 ==== Results
-The plot below is displays accuracy and loss on testing data by networks which are trained for:
-1, 2, 4, 8, 16, 32, 64, 128 and 256 epochs
+The plots below show the metrics of network trained under:
 
-include::./op/sgdcategorical_crossentropyrelul0.01e256b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=special]
+* 16 epochs
 
-As we can see from the graph, though we train the model each time with double the number of epochs as before,
-we don't necessarily obtain a big increase as we go for higher values.
+include::./op/sgdcategorical_crossentropyrelul0.01e16b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=metrics]
+
+* 64 epochs
+
+include::./op/sgdcategorical_crossentropyrelul0.01e64b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=metrics]
+
+* 256 epochs
+
+include::./op/sgdcategorical_crossentropyrelul0.01e256b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=metrics]
+
+We can see that though we seem to achieve higher accuracy by training the network for more epochs, we dont seem to have
+solved the problem of under-fitting.
+
+Moreover, when considering the trend of increase in accuracy, we have few interesting observations.
+
 Below is the data of 3 of the models trained under various epochs:
 
 * 64 epochs
@@ -179,50 +192,156 @@ include::./op/sgdcategorical_crossentropyrelul0.01e128b8192mDense512reluDense512
 
 include::./op/sgdcategorical_crossentropyrelul0.01e256b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=result]
 
-Considering the above trend, to reach accuracy > 95%, we'll need to train model for 1024 or maybe 2056 epochs.
+The plot below displays accuracy and loss on testing data by networks which are trained for:
+1, 2, 4, 8, 16, 32, 64, 128 and 256 epochs
 
-If we consider the training and validation metrics plot of 256 epochs:
+include::./op/sgdcategorical_crossentropyrelul0.01e256b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=special]
 
-include::./op/sgdcategorical_crossentropyrelul0.01e256b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=metrics]
+As we can see from the graph, though we train the model each time with double the number of epochs as before,
+we don't necessarily obtain a big increase as we go for higher values(though we still continue to suffer from
+under-fitting). It hits a plateau earlier.
 
-We can see that accuracy for training and testing data converge very early and
-hence, just increasing the number of epochs may not be a good idea.
+Considering the above trend, maybe to reach accuracy > 95%, we'll need to train model for 1024 or maybe 2056 epochs.
 
-So, moving ahead maybe we can take 2 epochs: 32 and 64 to experiment.
-Hence, __beyond a certain point, the increase in accuracy will be much lesser in relation to
-increase in number of epochs__.
+Hence, just increasing the number of epochs may not be a good idea. In other words, __beyond a certain point, the
+increase in accuracy will be much lesser in relation to increase in number of epochs__.
 
-If we consider the confusion matrix for 2 epochs of our interest:
+Moreover, to judge the number of epochs for further experimentation, if we see the ROC curves for
+
+* 16 epochs
++
+include::./op/sgdcategorical_crossentropyrelul0.01e16b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=roc_curve]
+
+include::./op/sgdcategorical_crossentropyrelul0.01e32b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=precision_recall_curve]
+
 * 32 epochs
++
+include::./op/sgdcategorical_crossentropyrelul0.01e32b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=roc_curve]
 
-include::./op/sgdcategorical_crossentropyrelul0.01e32b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=cmatrix]
+include::./op/sgdcategorical_crossentropyrelul0.01e32b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=precision_recall_curve]
 
 * 64 epochs
++
+include::./op/sgdcategorical_crossentropyrelul0.01e64b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=roc_curve]
 
-include::./op/sgdcategorical_crossentropyrelul0.01e64b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=cmatrix]
+include::./op/sgdcategorical_crossentropyrelul0.01e64b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=precision_recall_curve]
 
-We can see that model quickly learns to recognize 0, 1 and 6 while it has harder time recognizing 2, 3, 5 and 9
+We see that anything beyond 16 epochs the model is more 'confident', since it starts showing better area under roc
+for most classes. However, from precision recall curve we can see that when the model is put to test with all the
+samples though it's more confident it's predictions are not necessarily perfect.
 
-If we see the incorrect outputs:
-* 32 epochs
+In order to confirm above hypothesis, we provide below few examples:
+For 64 epochs:
 
-include::./op/sgdcategorical_crossentropyrelul0.01e32b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=incorrect]
+* Correctly classified images
++
+include::./op/sgdcategorical_crossentropyrelul0.01e64b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=correct]
 
-* 64 epochs
-
+* Incorrect
++
 include::./op/sgdcategorical_crossentropyrelul0.01e64b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=incorrect]
 
+For example, for class 1, our area under roc is 1.0 but if we see that images, just tilting one to the other
+side can cause our model to not recognize 1 anymore. Hence, we need to improve the precision-recall curve.
 
+Since, both ROC and precision-recall of 64 epochs is better, we choose to evaluate further with 64 and 32(just in case)
+by varying the batch size. As, that introduces more updates to model, we expect the model to learn more features and
+hence an improvement in precision-recall curve.
 
 === Batch size
-We started our experimentation with an arbitrary huge batch size.
+We started our experiments with an arbitrary huge batch size = 8192.
+In this section, we use the same configuration as before except for the batch sizes:
+include::./op/sgdcategorical_crossentropyrelul0.01e16b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=config]
 
-At 16 epochs:
+We performed experiments with various batch sizes of 4096, 2048, 1024, 512, 256, 128, 64, 32. Below we provide results for select few.
 
-include::./op/sgdcategorical_crossentropyrelul0.01e16b1024mDense512reluDense512reluDense10softmax/list.adoc[tags=metrics]
-include::./op/sgdcategorical_crossentropyrelul0.01e16b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=metrics]
+* At 32 epochs:
+** 32 batch size
++
+include::./op/sgdcategorical_crossentropyrelul0.01e32b32mDense512reluDense512reluDense10softmax/list.adoc[tags=metrics]
+** 64 batch size
++
+include::./op/sgdcategorical_crossentropyrelul0.01e32b64mDense512reluDense512reluDense10softmax/list.adoc[tags=metrics]
+** 128 batch size
++
+include::./op/sgdcategorical_crossentropyrelul0.01e32b128mDense512reluDense512reluDense10softmax/list.adoc[tags=metrics]
 
-At 32 epochs:
+* At 64 epochs:
+** 32 batch size
++
+include::./op/sgdcategorical_crossentropyrelul0.01e64b32mDense512reluDense512reluDense10softmax/list.adoc[tags=metrics]
+** 64 batch size
++
+include::./op/sgdcategorical_crossentropyrelul0.01e64b64mDense512reluDense512reluDense10softmax/list.adoc[tags=metrics]
+** 128 batch size
++
+include::./op/sgdcategorical_crossentropyrelul0.01e64b128mDense512reluDense512reluDense10softmax/list.adoc[tags=metrics]
 
-include::./op/sgdcategorical_crossentropyrelul0.01e32b1024mDense512reluDense512reluDense10softmax/list.adoc[tags=metrics]
-include::./op/sgdcategorical_crossentropyrelul0.01e32b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=metrics]
+As we can see from the metrics plots, somewhere about a batch size of 128, we start to see accuracy of training going
+higher than validation. This could mean that finally we can solve the problem of under-fitting by choosing
+batch sizes < 128 for 32 and 64 epochs.
+
+Also for smaller batches of 32 and 64(almost), we observe that it reaches a constant value in validation accuracy.
+Hence, this would be the best possible accuracy that this model could have and we can infact stop training the model
+when it reaches a constant value.
+For a batch size of 64, we can stop somewhere around 30 epoch and for batch size of 32,
+we can stop somewhere around 20 epochs.
+
+To confirm, if there's a really big of a difference between the 2, we see the precision recall curve:
+
+* At 32 epochs:
+** 64 batch size
++
+include::./op/sgdcategorical_crossentropyrelul0.01e32b64mDense512reluDense512reluDense10softmax/list.adoc[tags=precision_recall_curve]
+
+* At 64 epochs:
+** 32 batch size
++
+include::./op/sgdcategorical_crossentropyrelul0.01e64b32mDense512reluDense512reluDense10softmax/list.adoc[tags=precision_recall_curve]
+
+If we check roc curves:
+
+* At 32 epochs:
+** 64 batch size
++
+include::./op/sgdcategorical_crossentropyrelul0.01e32b64mDense512reluDense512reluDense10softmax/list.adoc[tags=roc_curve]
+
+* At 64 epochs:
+** 32 batch size
++
+include::./op/sgdcategorical_crossentropyrelul0.01e64b32mDense512reluDense512reluDense10softmax/list.adoc[tags=roc_curve]
+
+Hence, both the models are able to distinguish not just with full confidence but actually correct in most instances.
+This is evident by the result:
+
+* At 32 epochs:
+** 64 batch size
++
+include::./op/sgdcategorical_crossentropyrelul0.01e32b64mDense512reluDense512reluDense10softmax/list.adoc[tags=result]
+
+* At 64 epochs:
+** 32 batch size
++
+include::./op/sgdcategorical_crossentropyrelul0.01e64b32mDense512reluDense512reluDense10softmax/list.adoc[tags=result]
+
+To confirm, if we examine incorrectly classified outputs:
+
+* At 32 epochs:
+** 64 batch size
++
+include::./op/sgdcategorical_crossentropyrelul0.01e32b64mDense512reluDense512reluDense10softmax/list.adoc[tags=incorrect]
+
+* At 64 epochs:
+** 32 batch size
++
+include::./op/sgdcategorical_crossentropyrelul0.01e64b32mDense512reluDense512reluDense10softmax/list.adoc[tags=incorrect]
+
+We see that when the shape is slightly distorted or if the thickness is too big, the model fails to predict correctly.
+Also, to be fair, instances like 2 and 8 in the picture can confuse even a person on first glance.
+
+Important thing to notice is that, both the models classify incorrectly almost the same images. One is better than
+the other by just 0.6% i,e, one model classifies 20-25 images more correctly than the other for given set of
+10000 validation images.
+
+Since 32 epochs with 64 batch size is significantly faster than the vice-versa, we pick this configuration for further study.
+

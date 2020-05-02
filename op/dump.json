@@ -6,8 +6,8 @@
             "Dense 10softmax"
         ],
         "result_metrics": [
-            2.00770719871521,
-            0.43059998750686646
+            2.0563347526550295,
+            0.39910000562667847
         ],
         "loss_func": "categorical_crossentropy",
         "optimizer": "sgd",
@@ -26,8 +26,8 @@
             "Dense 10softmax"
         ],
         "result_metrics": [
-            1.9778928642272948,
-            0.4708999991416931
+            1.935832052230835,
+            0.5742999911308289
         ],
         "loss_func": "categorical_crossentropy",
         "optimizer": "sgd",
@@ -46,8 +46,8 @@
             "Dense 10softmax"
         ],
         "result_metrics": [
-            2.1248359477996828,
-            0.2989000082015991
+            2.1021336528778076,
+            0.3474999964237213
         ],
         "loss_func": "categorical_crossentropy",
         "optimizer": "sgd",
@@ -67,8 +67,8 @@
             "Dense 10softmax"
         ],
         "result_metrics": [
-            2.0973992691040038,
-            0.3953000009059906
+            2.1240455154418947,
+            0.42010000348091125
         ],
         "loss_func": "categorical_crossentropy",
         "optimizer": "sgd",
@@ -89,8 +89,8 @@
             "Dense 10softmax"
         ],
         "result_metrics": [
-            2.1838866764068605,
-            0.34279999136924744
+            2.182414223098755,
+            0.3357999920845032
         ],
         "loss_func": "categorical_crossentropy",
         "optimizer": "sgd",
@@ -112,8 +112,8 @@
             "Dense 10softmax"
         ],
         "result_metrics": [
-            2.2169689121246337,
-            0.3668000102043152
+            2.216713344955444,
+            0.3246000111103058
         ],
         "loss_func": "categorical_crossentropy",
         "optimizer": "sgd",
@@ -126,14 +126,100 @@
         "batch_size": 8192
     },
     {
+        "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e1b8192mDense512reluDense10softmax/./",
+        "layers": [
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            2.2357516590118407,
+            0.20389999449253082
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "sgd",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.01,
+        "nb_epochs": 1,
+        "batch_size": 8192
+    },
+    {
+        "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e1b8192mDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            2.225156664276123,
+            0.19140000641345978
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "sgd",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.01,
+        "nb_epochs": 1,
+        "batch_size": 8192
+    },
+    {
+        "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e1b8192mDense512reluDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            2.2673852127075196,
+            0.12020000070333481
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "sgd",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.01,
+        "nb_epochs": 1,
+        "batch_size": 8192
+    },
+    {
+        "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e1b8192mDense512reluDense512reluDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            2.2962855632781984,
+            0.11699999868869781
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "sgd",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.01,
+        "nb_epochs": 1,
+        "batch_size": 8192
+    },
+    {
         "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e2b8192mDense512reluDense10softmax/./",
         "layers": [
             "Dense 512relu",
             "Dense 10softmax"
         ],
         "result_metrics": [
-            2.116813856887817,
-            0.2808000147342682
+            2.131242723464966,
+            0.2303999960422516
         ],
         "loss_func": "categorical_crossentropy",
         "optimizer": "sgd",
@@ -153,8 +239,8 @@
             "Dense 10softmax"
         ],
         "result_metrics": [
-            2.1929385009765623,
-            0.257999986410141
+            2.1818618003845214,
+            0.28859999775886536
         ],
         "loss_func": "categorical_crossentropy",
         "optimizer": "sgd",
@@ -175,8 +261,8 @@
             "Dense 10softmax"
         ],
         "result_metrics": [
-            2.264328922653198,
-            0.13770000636577606
+            2.2576708450317384,
+            0.1662999987602234
         ],
         "loss_func": "categorical_crossentropy",
         "optimizer": "sgd",
@@ -198,8 +284,8 @@
             "Dense 10softmax"
         ],
         "result_metrics": [
-            2.2645962226867677,
-            0.15539999306201935
+            2.261336650466919,
+            0.14589999616146088
         ],
         "loss_func": "categorical_crossentropy",
         "optimizer": "sgd",
@@ -212,15 +298,14 @@
         "batch_size": 8192
     },
     {
-        "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e1b8192mDense512reluDense512reluDense10softmax/./",
+        "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e8b8192mDense512reluDense10softmax/./",
         "layers": [
-            "Dense 512relu",
             "Dense 512relu",
             "Dense 10softmax"
         ],
         "result_metrics": [
-            2.2568404067993164,
-            0.1858000010251999
+            1.6631956840515136,
+            0.6904000043869019
         ],
         "loss_func": "categorical_crossentropy",
         "optimizer": "sgd",
@@ -229,7 +314,7 @@
         ],
         "activation": "relu",
         "lr": 0.01,
-        "nb_epochs": 1,
+        "nb_epochs": 8,
         "batch_size": 8192
     },
     {
@@ -240,8 +325,53 @@
             "Dense 10softmax"
         ],
         "result_metrics": [
-            1.8522120643615723,
-            0.6894999742507935
+            1.7923814777374267,
+            0.6676999926567078
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "sgd",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.01,
+        "nb_epochs": 8,
+        "batch_size": 8192
+    },
+    {
+        "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e8b8192mDense512reluDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            2.0019770261764527,
+            0.6262000203132629
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "sgd",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.01,
+        "nb_epochs": 8,
+        "batch_size": 8192
+    },
+    {
+        "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e8b8192mDense512reluDense512reluDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            2.1485764926910402,
+            0.49239999055862427
         ],
         "loss_func": "categorical_crossentropy",
         "optimizer": "sgd",
@@ -261,8 +391,8 @@
             "Dense 10softmax"
         ],
         "result_metrics": [
-            1.3657108472824098,
-            0.7662000060081482
+            1.3867689556121827,
+            0.7656999826431274
         ],
         "loss_func": "categorical_crossentropy",
         "optimizer": "sgd",
@@ -282,8 +412,8 @@
             "Dense 10softmax"
         ],
         "result_metrics": [
-            0.8099543949127197,
-            0.8357999920845032
+            0.8159718578338623,
+            0.8363999724388123
         ],
         "loss_func": "categorical_crossentropy",
         "optimizer": "sgd",
@@ -303,8 +433,8 @@
             "Dense 10softmax"
         ],
         "result_metrics": [
-            0.4968498522281647,
-            0.8819000124931335
+            0.49294668295383454,
+            0.8824999928474426
         ],
         "loss_func": "categorical_crossentropy",
         "optimizer": "sgd",
@@ -324,8 +454,8 @@
             "Dense 10softmax"
         ],
         "result_metrics": [
-            0.3520656999707222,
-            0.9041000008583069
+            0.3510845910668373,
+            0.9052000045776367
         ],
         "loss_func": "categorical_crossentropy",
         "optimizer": "sgd",
@@ -345,8 +475,8 @@
             "Dense 10softmax"
         ],
         "result_metrics": [
-            0.2869773189932108,
-            0.9222000241279602
+            0.28139659885764123,
+            0.9210000038146973
         ],
         "loss_func": "categorical_crossentropy",
         "optimizer": "sgd",
@@ -359,15 +489,15 @@
         "batch_size": 8192
     },
     {
-        "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e1b1024mDense512reluDense512reluDense10softmax/./",
+        "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e16b64mDense512reluDense512reluDense10softmax/./",
         "layers": [
             "Dense 512relu",
             "Dense 512relu",
             "Dense 10softmax"
         ],
         "result_metrics": [
-            1.8595515493392945,
-            0.635200023651123
+            0.11951240688599646,
+            0.9650999903678894
         ],
         "loss_func": "categorical_crossentropy",
         "optimizer": "sgd",
@@ -376,19 +506,19 @@
         ],
         "activation": "relu",
         "lr": 0.01,
-        "nb_epochs": 1,
-        "batch_size": 1024
+        "nb_epochs": 16,
+        "batch_size": 64
     },
     {
-        "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e2b1024mDense512reluDense512reluDense10softmax/./",
+        "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e16b128mDense512reluDense512reluDense10softmax/./",
         "layers": [
             "Dense 512relu",
             "Dense 512relu",
             "Dense 10softmax"
         ],
         "result_metrics": [
-            1.520913777923584,
-            0.7253999710083008
+            0.17374835629761218,
+            0.9501000046730042
         ],
         "loss_func": "categorical_crossentropy",
         "optimizer": "sgd",
@@ -397,19 +527,19 @@
         ],
         "activation": "relu",
         "lr": 0.01,
-        "nb_epochs": 2,
-        "batch_size": 1024
+        "nb_epochs": 16,
+        "batch_size": 128
     },
     {
-        "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e4b1024mDense512reluDense512reluDense10softmax/./",
+        "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e16b256mDense512reluDense512reluDense10softmax/./",
         "layers": [
             "Dense 512relu",
             "Dense 512relu",
             "Dense 10softmax"
         ],
         "result_metrics": [
-            0.8412103837013245,
-            0.8287000060081482
+            0.22989249719381333,
+            0.9348000288009644
         ],
         "loss_func": "categorical_crossentropy",
         "optimizer": "sgd",
@@ -418,19 +548,19 @@
         ],
         "activation": "relu",
         "lr": 0.01,
-        "nb_epochs": 4,
-        "batch_size": 1024
+        "nb_epochs": 16,
+        "batch_size": 256
     },
     {
-        "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e8b1024mDense512reluDense512reluDense10softmax/./",
+        "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e16b512mDense512reluDense512reluDense10softmax/./",
         "layers": [
             "Dense 512relu",
             "Dense 512relu",
             "Dense 10softmax"
         ],
         "result_metrics": [
-            0.5130762873649597,
-            0.8769999742507935
+            0.29049777094721796,
+            0.9186999797821045
         ],
         "loss_func": "categorical_crossentropy",
         "optimizer": "sgd",
@@ -439,8 +569,8 @@
         ],
         "activation": "relu",
         "lr": 0.01,
-        "nb_epochs": 8,
-        "batch_size": 1024
+        "nb_epochs": 16,
+        "batch_size": 512
     },
     {
         "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e16b1024mDense512reluDense512reluDense10softmax/./",
@@ -450,8 +580,8 @@
             "Dense 10softmax"
         ],
         "result_metrics": [
-            0.36748497461080554,
-            0.9017999768257141
+            0.3699131074309349,
+            0.902999997138977
         ],
         "loss_func": "categorical_crossentropy",
         "optimizer": "sgd",
@@ -464,6 +594,153 @@
         "batch_size": 1024
     },
     {
+        "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e16b2048mDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.5264289486646653,
+            0.8730999827384949
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "sgd",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.01,
+        "nb_epochs": 16,
+        "batch_size": 2048
+    },
+    {
+        "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e16b4096mDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.870159553527832,
+            0.8303999900817871
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "sgd",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.01,
+        "nb_epochs": 16,
+        "batch_size": 4096
+    },
+    {
+        "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e16b16384mDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            1.8880923217773438,
+            0.6478999853134155
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "sgd",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.01,
+        "nb_epochs": 16,
+        "batch_size": 16384
+    },
+    {
+        "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e32b64mDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.07941898630298674,
+            0.9754999876022339
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "sgd",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.01,
+        "nb_epochs": 32,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e32b128mDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.11985788404010236,
+            0.9645000100135803
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "sgd",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.01,
+        "nb_epochs": 32,
+        "batch_size": 128
+    },
+    {
+        "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e32b256mDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.1690772136554122,
+            0.9516000151634216
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "sgd",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.01,
+        "nb_epochs": 32,
+        "batch_size": 256
+    },
+    {
+        "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e32b512mDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.22806266543865203,
+            0.9358999729156494
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "sgd",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.01,
+        "nb_epochs": 32,
+        "batch_size": 512
+    },
+    {
         "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e32b1024mDense512reluDense512reluDense10softmax/./",
         "layers": [
             "Dense 512relu",
@@ -471,8 +748,8 @@
             "Dense 10softmax"
         ],
         "result_metrics": [
-            0.28966374046504495,
-            0.919700026512146
+            0.28921654047966006,
+            0.9182000160217285
         ],
         "loss_func": "categorical_crossentropy",
         "optimizer": "sgd",
@@ -485,6 +762,153 @@
         "batch_size": 1024
     },
     {
+        "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e32b2048mDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.37101167383193967,
+            0.9017000198364258
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "sgd",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.01,
+        "nb_epochs": 32,
+        "batch_size": 2048
+    },
+    {
+        "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e32b4096mDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.5220111500740051,
+            0.8755000233650208
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "sgd",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.01,
+        "nb_epochs": 32,
+        "batch_size": 4096
+    },
+    {
+        "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e32b16384mDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            1.395870375061035,
+            0.7727000117301941
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "sgd",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.01,
+        "nb_epochs": 32,
+        "batch_size": 16384
+    },
+    {
+        "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e64b64mDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.0642299197432585,
+            0.9799000024795532
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "sgd",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.01,
+        "nb_epochs": 64,
+        "batch_size": 64
+    },
+    {
+        "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e64b128mDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.07841668524881824,
+            0.9758999943733215
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "sgd",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.01,
+        "nb_epochs": 64,
+        "batch_size": 128
+    },
+    {
+        "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e64b256mDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.11854053497537971,
+            0.9652000069618225
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "sgd",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.01,
+        "nb_epochs": 64,
+        "batch_size": 256
+    },
+    {
+        "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e64b512mDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.17086545235961675,
+            0.9503999948501587
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "sgd",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.01,
+        "nb_epochs": 64,
+        "batch_size": 512
+    },
+    {
         "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e64b1024mDense512reluDense512reluDense10softmax/./",
         "layers": [
             "Dense 512relu",
@@ -492,8 +916,8 @@
             "Dense 10softmax"
         ],
         "result_metrics": [
-            0.22938422235995531,
-            0.9347000122070312
+            0.22764026609510182,
+            0.9375
         ],
         "loss_func": "categorical_crossentropy",
         "optimizer": "sgd",
@@ -506,15 +930,15 @@
         "batch_size": 1024
     },
     {
-        "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e128b1024mDense512reluDense512reluDense10softmax/./",
+        "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e64b2048mDense512reluDense512reluDense10softmax/./",
         "layers": [
             "Dense 512relu",
             "Dense 512relu",
             "Dense 10softmax"
         ],
         "result_metrics": [
-            0.1716018145889044,
-            0.9501000046730042
+            0.28527583368718623,
+            0.9211999773979187
         ],
         "loss_func": "categorical_crossentropy",
         "optimizer": "sgd",
@@ -523,19 +947,19 @@
         ],
         "activation": "relu",
         "lr": 0.01,
-        "nb_epochs": 128,
-        "batch_size": 1024
+        "nb_epochs": 64,
+        "batch_size": 2048
     },
     {
-        "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e256b1024mDense512reluDense512reluDense10softmax/./",
+        "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e64b4096mDense512reluDense512reluDense10softmax/./",
         "layers": [
             "Dense 512relu",
             "Dense 512relu",
             "Dense 10softmax"
         ],
         "result_metrics": [
-            0.11690907100625336,
-            0.9660000205039978
+            0.36512116503715514,
+            0.9016000032424927
         ],
         "loss_func": "categorical_crossentropy",
         "optimizer": "sgd",
@@ -544,7 +968,91 @@
         ],
         "activation": "relu",
         "lr": 0.01,
-        "nb_epochs": 256,
-        "batch_size": 1024
+        "nb_epochs": 64,
+        "batch_size": 4096
+    },
+    {
+        "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e64b16384mDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.8244223059654235,
+            0.8382999897003174
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "sgd",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.01,
+        "nb_epochs": 64,
+        "batch_size": 16384
+    },
+    {
+        "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e32b32768mDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            1.8209383178710938,
+            0.6672999858856201
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "sgd",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.01,
+        "nb_epochs": 32,
+        "batch_size": 32768
+    },
+    {
+        "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e32b32mDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.06253043235635851,
+            0.9812999963760376
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "sgd",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.01,
+        "nb_epochs": 32,
+        "batch_size": 32
+    },
+    {
+        "sub_dir": "./op/sgdcategorical_crossentropyrelul0.01e64b32mDense512reluDense512reluDense10softmax/./",
+        "layers": [
+            "Dense 512relu",
+            "Dense 512relu",
+            "Dense 10softmax"
+        ],
+        "result_metrics": [
+            0.06338322437273745,
+            0.9815999865531921
+        ],
+        "loss_func": "categorical_crossentropy",
+        "optimizer": "sgd",
+        "metrics": [
+            "categorical_accuracy"
+        ],
+        "activation": "relu",
+        "lr": 0.01,
+        "nb_epochs": 64,
+        "batch_size": 32
     }
 ]

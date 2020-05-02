@@ -62,8 +62,8 @@ image::./op/sgdcategorical_crossentropyrelul0.01e64b8192mDense512reluDense512rel
 [source, json]
 ----
 {
-    "loss": 0.4968498522281647,
-    "categorical_accuracy": 0.8819000124931335
+    "loss": 0.49294668295383454,
+    "categorical_accuracy": 0.8824999928474426
 }
 ----
 # end::result[]

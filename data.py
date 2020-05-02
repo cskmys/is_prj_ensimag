@@ -22,12 +22,12 @@ def plt_metrics(cfg):
     nb_metrics = len(metrics) // 2
     for i in range(nb_metrics):
         plt.subplot(nb_metrics, 1, i + 1)
-        plt.plot(hist.history[metrics[i]])
         plt.plot(hist.history[metrics[i + nb_metrics]])
+        plt.plot(hist.history[metrics[i]])
         plt.title('model ' + metrics[i + nb_metrics])
         plt.ylabel(metrics[i + nb_metrics])
         plt.xlabel('epoch')
-        plt.legend(['test', 'train'], loc='best')
+        plt.legend(['train', 'val'], loc='best')
     plt.tight_layout()
     plt.close(fig)
     fig.savefig(op.get_full_file_nam(cfg, cfg.prj.files.metrics_plot))
