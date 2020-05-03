@@ -1,11 +1,18 @@
-= Report
+= Neural Networks Programming Exercise Report
+:authors: Chakka Karthik Subramanyam; Firsov Oleksandr; Hunt Christopher
+:revdate: 03-05-2020
+:doctype: book
+:toc:
 
 == Introduction
+In this assignment we manipulate several hyper-parameters and evaluate their impacts on various performance metrics for neural networks.
+We evaluate mainly 3 types of networks:
 
+* Conventional Feed-forward network
+* Convolutional Neural network
+* Auto encoders
 
-
-
-== Conventional Neural Network
+== Feed forward Neural Network
 === Parameters
 * Input:
 +
@@ -15,9 +22,8 @@ Since, the images from MNIST database are of 28x28 pixels, we have 784 inputs.
 * Output:
 +
 The outputs labels from MNIST database are converted to one-hot encoding.
-From out network, for each class we receive the probability values which we further process it to get
-various metrics such as accuracy, ROC, Precision-Recall, Confusion Matrix etc.
-To avoid, unnecessary blotting of the report, we have the plots whenever there's something interesting.
+From our network, for each class we receive the probability values which we further process it to get various metrics such as accuracy, ROC, Precision-Recall, Confusion Matrix etc.
+(To prevent, unnecessary increase in size of the report, we have included the plots to support our observations and to highlight whenever there's something interesting.)
 
 === Procedure
 * Training
@@ -45,7 +51,7 @@ Number of Outputs <= #neurons <= Number of inputs
 #neurons ~ Sum(Number of inputs, Number of Outputs) x 2/3
 ----
 In our case, Sum(Number of inputs, Number of Outputs) x 2/3 = 529.33 ~ 530
-Moreover, for reasons of speed, it is advised to use powers of 2.
+Moreover, for reasons of speed and GPU optimizations, it is advised to use powers of 2.
 Hence, an ideal value would be: 512. However, to be sure we test with both 256 and 512 neurons
 
 While we evaluate number of neurons, we keep the following parameters constant:
@@ -55,6 +61,7 @@ include::./op/sgdcategorical_crossentropyrelul0.01e4b8192mDense512reluDense10sof
 * 256 Neurons
 +
 include::./op/sgdcategorical_crossentropyrelul0.01e4b8192mDense256reluDense10softmax/list.adoc[tags=result]
+
 * 512 Neurons
 +
 include::./op/sgdcategorical_crossentropyrelul0.01e4b8192mDense512reluDense10softmax/list.adoc[tags=result]
@@ -71,9 +78,8 @@ include::./op/sgdcategorical_crossentropyrelul0.01e4b8192mDense256reluDense10sof
 +
 include::./op/sgdcategorical_crossentropyrelul0.01e4b8192mDense512reluDense10softmax/list.adoc[tags=roc_curve]
 
-As we see one of the ROC curves of 256 neuron network goes below the diagonal, from image we can infer that model
-is not able to confidently decide 'not 9'.
-hence it's better to have 512 neurons than 256.
+As we see one of the ROC curves of 256 neuron network goes below the diagonal, from image we can infer that model is not able to confidently decide 'not 9'.
+Hence it's better to have 512 neurons than 256.
 
 
 With 128 Neurons:
@@ -99,40 +105,42 @@ include::./op/sgdcategorical_crossentropyrelul0.01e4b8192mDense512reluDense512re
 
 ==== Results
 * 2 hidden Layers
++
 include::./op/sgdcategorical_crossentropyrelul0.01e4b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=result]
 * 3 hidden Layers
++
 include::./op/sgdcategorical_crossentropyrelul0.01e4b8192mDense512reluDense512reluDense512reluDense10softmax/list.adoc[tags=result]
 * 4 hidden Layers
++
 include::./op/sgdcategorical_crossentropyrelul0.01e4b8192mDense512reluDense512reluDense512reluDense512reluDense10softmax/list.adoc[tags=result]
 
 If we examine the metrics plot:
 
 * 2 hidden Layers
-
++
 include::./op/sgdcategorical_crossentropyrelul0.01e4b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=metrics]
 * 3 hidden Layers
-
++
 include::./op/sgdcategorical_crossentropyrelul0.01e4b8192mDense512reluDense512reluDense512reluDense10softmax/list.adoc[tags=metrics]
 * 4 hidden Layers
-
++
 include::./op/sgdcategorical_crossentropyrelul0.01e4b8192mDense512reluDense512reluDense512reluDense512reluDense10softmax/list.adoc[tags=metrics]
 
-The validation accuracy is higher than the training accuracy and also the validation loss is lower than
-the training loss. This suggests under-fitting. which we will need to eliminate.
-Since the gap between the training and validation plots becomes more pronounced for higher number of hidden layers,
-we can say that when we have more layers, the model learns 'fast'(premature) and hence under-fits the data.
+The validation accuracy is higher than the training accuracy and also the validation loss is lower than the training loss.
+This suggests under-fitting. which we will need to eliminate.
+Since the gap between the training and validation plots becomes more pronounced for higher number of hidden layers, we can say that when we have more layers, the model learns 'fast'(premature) and hence under-fits the data.
 
 Maybe if we train the model for more longer time, will more layers provide better results?:
 We try to check the impact by increasing the number of epochs to 8:
 
 * 2 hidden Layers
-
++
 include::./op/sgdcategorical_crossentropyrelul0.01e8b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=result]
 * 3 hidden Layers
-
++
 include::./op/sgdcategorical_crossentropyrelul0.01e8b8192mDense512reluDense512reluDense512reluDense10softmax/list.adoc[tags=result]
 * 4 hidden Layers
-
++
 include::./op/sgdcategorical_crossentropyrelul0.01e8b8192mDense512reluDense512reluDense512reluDense512reluDense10softmax/list.adoc[tags=result]
 
 Even if we increase the number of epochs, 2 layers perform better.
@@ -144,11 +152,11 @@ Therefore, *we will be using 2 hidden layers for all the upcoming tests*
 In the previous section we saw results for 2 hidden layers:
 
 * 4 epochs
-
++
 include::./op/sgdcategorical_crossentropyrelul0.01e4b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=result]
 
 * 8 epochs
-
++
 include::./op/sgdcategorical_crossentropyrelul0.01e8b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=result]
 
 The model and config that we carry from previous section:
@@ -157,80 +165,74 @@ include::./op/sgdcategorical_crossentropyrelul0.01e4b8192mDense512reluDense512re
 
 include::./op/sgdcategorical_crossentropyrelul0.01e4b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=model]
 
-Now under the same configuration, we experiment with 8, 16, 32, 64 .... until, if possible, we are able to solve
-under-fitting.
+Now under the same configuration, we experiment with 8, 16, 32, 64 .... until, if possible, we are able to solve under-fitting.
 
 ==== Results
 The plots below show the metrics of network trained under:
 
 * 16 epochs
-
++
 include::./op/sgdcategorical_crossentropyrelul0.01e16b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=metrics]
 
 * 64 epochs
-
++
 include::./op/sgdcategorical_crossentropyrelul0.01e64b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=metrics]
 
 * 256 epochs
-
++
 include::./op/sgdcategorical_crossentropyrelul0.01e256b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=metrics]
 
-We can see that though we seem to achieve higher accuracy by training the network for more epochs, we dont seem to have
-solved the problem of under-fitting.
+We can see that though we seem to achieve higher accuracy by training the network for more epochs, we dont seem to have solved the problem of under-fitting.
 
 Moreover, when considering the trend of increase in accuracy, we have few interesting observations.
 
 Below is the data of 3 of the models trained under various epochs:
 
 * 64 epochs
-
++
 include::./op/sgdcategorical_crossentropyrelul0.01e64b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=result]
 
 * 128 epochs
-
++
 include::./op/sgdcategorical_crossentropyrelul0.01e128b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=result]
 
 * 256 epochs
-
++
 include::./op/sgdcategorical_crossentropyrelul0.01e256b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=result]
 
-The plot below displays accuracy and loss on testing data by networks which are trained for:
-1, 2, 4, 8, 16, 32, 64, 128 and 256 epochs
+The plot below displays accuracy and loss on testing data by networks which are trained for: 1, 2, 4, 8, 16, 32, 64, 128 and 256 epochs.
 
 include::./op/sgdcategorical_crossentropyrelul0.01e256b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=special]
 
-As we can see from the graph, though we train the model each time with double the number of epochs as before,
-we don't necessarily obtain a big increase as we go for higher values(though we still continue to suffer from
-under-fitting). It hits a plateau earlier.
+As we can see from the graph, though we train the model each time with double the number of epochs as before, we don't necessarily obtain a big increase as we go for higher values(though we still continue to suffer from under-fitting).
+It hits a plateau earlier.
 
 Considering the above trend, maybe to reach accuracy > 95%, we'll need to train model for 1024 or maybe 2056 epochs.
 
-Hence, just increasing the number of epochs may not be a good idea. In other words, __beyond a certain point, the
-increase in accuracy will be much lesser in relation to increase in number of epochs__.
+Hence, just increasing the number of epochs may not be a good idea. In other words, __beyond a certain point, the increase in accuracy will be much lesser in relation to increase in number of epochs__.
 
 Moreover, to judge the number of epochs for further experimentation, if we see the ROC curves for
 
 * 16 epochs
 +
 include::./op/sgdcategorical_crossentropyrelul0.01e16b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=roc_curve]
-
++
 include::./op/sgdcategorical_crossentropyrelul0.01e32b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=precision_recall_curve]
 
 * 32 epochs
 +
 include::./op/sgdcategorical_crossentropyrelul0.01e32b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=roc_curve]
-
++
 include::./op/sgdcategorical_crossentropyrelul0.01e32b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=precision_recall_curve]
 
 * 64 epochs
 +
 include::./op/sgdcategorical_crossentropyrelul0.01e64b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=roc_curve]
-
++
 include::./op/sgdcategorical_crossentropyrelul0.01e64b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=precision_recall_curve]
 
-We see that anything beyond 16 epochs the model is more 'confident', since it starts showing better area under roc
-for most classes. However, from precision recall curve we can see that when the model is put to test with all the
-samples though it's more confident it's predictions are not necessarily perfect.
+We see that anything beyond 16 epochs the model is more 'confident', since it starts showing better area under roc for most classes.
+However, from precision recall curve we can see that when the model is put to test with all the samples though it's more confident it's predictions are not necessarily perfect.
 
 In order to confirm above hypothesis, we provide below few examples:
 For 64 epochs:
@@ -243,12 +245,11 @@ include::./op/sgdcategorical_crossentropyrelul0.01e64b8192mDense512reluDense512r
 +
 include::./op/sgdcategorical_crossentropyrelul0.01e64b8192mDense512reluDense512reluDense10softmax/list.adoc[tags=incorrect]
 
-For example, for class 1, our area under roc is 1.0 but if we see that images, just tilting one to the other
-side can cause our model to not recognize 1 anymore. Hence, we need to improve the precision-recall curve.
+For example, for class 1, our area under roc is 1.0 but if we see that images, just tilting one to the other side can cause our model to not recognize 1 anymore.
+Hence, we need to improve the precision-recall curve.
 
-Since, both ROC and precision-recall of 64 epochs is better, we choose to evaluate further with 64 and 32(just in case)
-by varying the batch size. As, that introduces more updates to model, we expect the model to learn more features and
-hence an improvement in precision-recall curve.
+Since, both ROC and precision-recall of 64 epochs is better, we choose to evaluate further with 64 and 32(just in case) by varying the batch size.
+As, that introduces more updates to model, we expect the model to learn more features and hence an improvement in precision-recall curve.
 
 === Batch size
 We started our experiments with an arbitrary huge batch size = 8192.
@@ -279,15 +280,12 @@ include::./op/sgdcategorical_crossentropyrelul0.01e64b64mDense512reluDense512rel
 +
 include::./op/sgdcategorical_crossentropyrelul0.01e64b128mDense512reluDense512reluDense10softmax/list.adoc[tags=metrics]
 
-As we can see from the metrics plots, somewhere about a batch size of 128, we start to see accuracy of training going
-higher than validation. This could mean that finally we can solve the problem of under-fitting by choosing
-batch sizes < 128 for 32 and 64 epochs.
+As we can see from the metrics plots, somewhere about a batch size of 128, we start to see accuracy of training going higher than validation.
+This could mean that finally we can solve the problem of under-fitting by choosing batch sizes < 128 for 32 and 64 epochs.
 
 Also for smaller batches of 32 and 64(almost), we observe that it reaches a constant value in validation accuracy.
-Hence, this would be the best possible accuracy that this model could have and we can infact stop training the model
-when it reaches a constant value.
-For a batch size of 64, we can stop somewhere around 30 epoch and for batch size of 32,
-we can stop somewhere around 20 epochs.
+Hence, this would be the best possible accuracy that this model could have and we can infact stop training the model when it reaches a constant value.
+For a batch size of 64, we can stop somewhere around 30 epoch and for batch size of 32, we can stop somewhere around 20 epochs.
 
 To confirm, if there's a really big of a difference between the 2, we see the precision recall curve:
 
@@ -341,9 +339,8 @@ include::./op/sgdcategorical_crossentropyrelul0.01e64b32mDense512reluDense512rel
 We see that when the shape is slightly distorted or if the thickness is too big, the model fails to predict correctly.
 Also, to be fair, instances like 2 and 8 in the picture can confuse even a person on first glance.
 
-Important thing to notice is that, both the models classify incorrectly almost the same images. One is better than
-the other by just 0.6% i,e, one model classifies 20-25 images more correctly than the other for given set of
-10000 validation images.
+Important thing to notice is that, both the models classify incorrectly almost the same images.
+One is better than the other by just 0.6% i,e, one model classifies 20-25 images more correctly than the other for given set of 10000 validation images.
 
 Since 32 epochs with 64 batch size is significantly faster than the vice-versa, we pick this configuration for further study.
 
@@ -353,12 +350,11 @@ include::./op/sgdcategorical_crossentropyrelul0.01e32b64mDense512reluDense512rel
 
 [NOTE]
 ====
-We don't change the activation of output layer since for a multi-class classification, softmax is the most apt amongst
-the metrics available in Keras for our problem.
+We don't change the activation of output layer since for a multi-class classification, softmax is the most apt amongst the metrics available in Keras for our problem.
 ====
 
-Since we use, sgd(stochastic gradient descent) as the algorithm for back-propagation, we have to choose a function
-that is differentiable. Also, we need to choose a non-linear function to help network fit complex pattern.
+Since we use, sgd(stochastic gradient descent) as the algorithm for back-propagation, we have to choose a function that is differentiable.
+Also, we need to choose a non-linear function to help network fit complex pattern.
 Hence, we picked the following activation functions:
 
 * Relu:
@@ -416,16 +412,13 @@ include::./op/sgdcategorical_crossentropylinearl0.01e32b64mDense512linearDense51
 }
 ----
 
-As usual *Relu* provided highest accuracy with shorter training time of 49 seconds, while hard_sigmoid takes the
-longest amount of time.
+As usual *Relu* provided highest accuracy with shorter training time of 49 seconds, while hard_sigmoid takes the longest amount of time.
 
-In terms of accuracy, we see that the non-linear functions that are centered around zero provide good accuracy while
-those centered at 0.5 such as sigmoid and hard_sigmoid performed the worst.
+In terms of accuracy, we see that the non-linear functions that are centered around zero provide good accuracy while those centered at 0.5 such as sigmoid and hard_sigmoid performed the worst.
 
-Along with non-linear functions above, out of curiosity, we tested the linear function of keras which takes input
-tensor as the activation value. We are bit surprised to see that it infact performs, giving an accuracy of 92%!
-One reasoning we had from observing other function results is that, maybe the constant value obtained after
-differentiation is centered around 0 and 0.5.
+Along with non-linear functions above, out of curiosity, we tested the linear function of keras which takes input tensor as the activation value.
+We are bit surprised to see that it infact performs, giving an accuracy of 92%!
+One reasoning we had from observing other function results is that, maybe the constant value obtained after differentiation is centered around 0 and 0.5.
 Hence, it performs better than functions centered at 0.5 and worse than those at 0.
 
 === Optimizer and Learning rates
@@ -438,8 +431,8 @@ When we see the accuracy of the prediction with test data and the tie taken for 
 
 include::./op/Nadamcategorical_crossentropyrelul0.01e32b64mDense512reluDense512reluDense10softmax/list.adoc[tags=special]
 
-We observe that there's an improvement in accuracy. Curious about improvements in accuracy and such high time taken,
-we checked the default learning rates of the optimizers recommended by keras, we saw:
+We observe that there's an improvement in accuracy.
+Curious about improvements in accuracy and such high time taken, we checked the default learning rates of the optimizers recommended by keras, we saw:
 [source, json]
 ----
 {
@@ -453,8 +446,7 @@ we checked the default learning rates of the optimizers recommended by keras, we
 }
 ----
 
-Though we see that all other optimizers performed better, except adagrad and adadelta, all other had learning rate
-significantly lower than sgd(though sgd performs the fastest).
+Though we see that all other optimizers performed better, except adagrad and adadelta, all other had learning rate significantly lower than sgd(though sgd performs the fastest).
 
 When we compare the plots:
 
@@ -498,16 +490,16 @@ If we check the incorrectly classified outputs:
 
 include::./op/Adadeltacategorical_crossentropyrelul0.01e32b64mDense512reluDense512reluDense10softmax/list.adoc[tags=incorrect]
 
-We see that model has predicted all the values well and the ones that it missed are in the cases where inputs were
-not clear or the shape is very unconventional almost to the point that even a person could mis-recognize at first glance.
+We see that model has predicted all the values well and the ones that it missed are in the cases where inputs were not clear or the shape is very unconventional almost to the point that even a person could mis-recognize at first glance.
 
-Since, our model reaches 100% way earlier than sgd for all the optimizer that we used, we can reduce the number of
-epochs to stop training early and prevent over-fitting.
+Since, our model reaches 100% way earlier than sgd for all the optimizer that we used, we can reduce the number of epochs to stop training early and prevent over-fitting.
 
 If we consider the time plots shown previously, we can see that with adamax, adagrad and adadelta reaches 100% in < 10 epochs.
-Hence, by choosing one of them we can train our model faster. We expect the training time to come down < 50% of current time.
+Hence, by choosing one of them we can train our model faster.
+We expect the training time to come down < 50% of current time.
 
-Now we evaluate the model for 5 epochs with adamax, adagrad and adadelta. The results we obtained were:
+Now we evaluate the model for 5 epochs with adamax, adagrad and adadelta.
+The results we obtained were:
 
 include::./op/Adamaxcategorical_crossentropyrelul0.01e5b64mDense512reluDense512reluDense10softmax/list.adoc[tags=special]
 
@@ -532,33 +524,46 @@ Other than classification of label 9, everything else seems to be well.
 
 include::./op/Adamaxcategorical_crossentropyrelul0.01e5b64mDense512reluDense512reluDense10softmax/list.adoc[tags=incorrect]
 Now if we see our model has performed best possible at very less training time.
-The error are very 'forgivable' especially the 5s, 6, 3 and 2 are distorted and our model though wrong in these examples
-has approximated the features to the best available ones.
+The error are very 'forgivable' especially the 5s, 6, 3 and 2 are distorted and our model though wrong in these examples has approximated the features to the best available ones.
 
 === Conclusion
 After running some more experiments for lower number of neurons and layers under the last configuration:
 include::./op/Adamaxcategorical_crossentropyrelul0.01e5b64mDense512reluDense512reluDense10softmax/list.adoc[tags=config]
 
 we observe that we achieved almost 'similar' levels of accuracy even at 1 hidden layer and 128 neurons.
-To make sure that we are not missing something important, we did even shuffle the data and we were able to see similar
-results and behavior.
+To make sure that we are not missing something important, we did even shuffle the data and we were able to see similar results and behavior.
 
-Whether our experimentation has led us to a sweet spot of the hyper-parameters and hence we can achieve the same result
-with lesser layers or whether our model from last section:
+Whether our experimentation has led us to a sweet spot of the hyper-parameters and hence we can achieve the same result with lesser layers or whether our model from last section:
 
 include::./op/Adamaxcategorical_crossentropyrelul0.01e5b64mDense512reluDense512reluDense10softmax/list.adoc[tags=model]
 
 has too many weights much of which has almost no impact on the outcome is a question needs to be explored further.
 
-== Convolution Neural Networks
+== Convolutional Neural Networks
+
+=== Parameters
+* Input:
++
+The 2d Gray scale image from MNIST database which are of 28x28 pixels, are used as an input to our CNN.
+
+* Output:
++
+Same as previous section, i,e, we use one-hot encoding of output labels
+
+=== Procedure
+* Training, Testing and Evaluation
++
+Same as before but this time since we have some convolutional layers, we have scope to visually represent their activations to get deeper understanding of impact of various hyper-parameters
+
+=== Baseline
 We carry some of the learning from the last section and use the hyper-parameters that served us well.
-In the conclusion we mentioned that we were able to see almost similar levels of accuracy between layers with 512 and 128 neurons
-under the configuration:
+In the conclusion of last section, we mentioned that we were able to see almost similar levels of accuracy between layers with 512 and 128 neurons under the configuration:
 include::./op/Adamaxcategorical_crossentropyrelul0.002e5b64mDense128reluDense10softmax/list.adoc[tags=config]
 
 Hence, this time for the neural network part of the CNN we started with one layer with 128 neurons and the above configuration.
-We quickly ran into under-fitting issues, maybe cause less number of neurons didn't enable it to learn more.
-Hence, we retain 512 neurons with 2 hidden layers as in last section as shown in figure below:
+We quickly ran into under-fitting issues, maybe cause less number of neurons didn't enable network to learn more.
+Hence, we retain 512 neurons with 2 hidden layers as in last section.
+The model we will use in this section:
 
 include::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D4f3x3MaxPooling2D2x2Conv2D4f3x3MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/list.adoc[tags=model]
 
@@ -576,11 +581,9 @@ include::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D2f3x3MaxPoolin
 +
 include::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D4f3x3MaxPooling2D2x2Conv2D4f3x3MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/list.adoc[tags=metrics]
 
-
 * 8 filter
 +
 include::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f3x3MaxPooling2D2x2Conv2D8f3x3MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/list.adoc[tags=metrics]
-
 
 * 16 filter
 +
@@ -590,8 +593,8 @@ include::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D16f3x3MaxPooli
 +
 include::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D32f3x3MaxPooling2D2x2Conv2D32f3x3MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/list.adoc[tags=metrics]
 
-Under 8 filters we ran into risk of under-fitting and over 8, we risk being stuck at plateau where the accuracy for
-the test data will never improve. Hence, we will choose 8.
+Under 8 filters we ran into risk of under-fitting and over 8, we risk being stuck at plateau where the accuracy for the test data will never improve.
+Hence, we will choose 8.
 
 If we compare the results and evaluation curves, they are pretty much same for 8 and 32.
 
@@ -617,8 +620,7 @@ include::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f3x3MaxPoolin
 +
 include::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D32f3x3MaxPooling2D2x2Conv2D32f3x3MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/list.adoc[tags=incorrect]
 
-Both models make almost same types of errors. But, 32 filter model gets saturated, while with 8 filters we still have
-some room to explore.
+Both models make almost same types of errors. But, 32 filter model gets saturated, while with 8 filters we still have some room to explore.
 
 It'll also be interesting to visualize the activations at convolution layers for them both:
 
@@ -626,10 +628,13 @@ It'll also be interesting to visualize the activations at convolution layers for
 +
 .0_l0_Conv2D8f3x3
 image::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f3x3MaxPooling2D2x2Conv2D8f3x3MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/0_l0_Conv2D8f3x3.png[]
++
 .1_l1_MaxPooling2D2x2
 image::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f3x3MaxPooling2D2x2Conv2D8f3x3MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/1_l1_MaxPooling2D2x2.png[]
++
 .2_l2_Conv2D8f3x3
 image::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f3x3MaxPooling2D2x2Conv2D8f3x3MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/2_l2_Conv2D8f3x3.png[]
++
 .3_l3_MaxPooling2D2x2
 image::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f3x3MaxPooling2D2x2Conv2D8f3x3MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/3_l3_MaxPooling2D2x2.png[]
 
@@ -639,18 +644,20 @@ The features are quite different from another and cover most of 7. Hence, it's q
 +
 .0_l0_Conv2D32f3x3
 image::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D32f3x3MaxPooling2D2x2Conv2D32f3x3MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/0_l0_Conv2D32f3x3.png[]
++
 .1_l1_MaxPooling2D2x2
 image::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D32f3x3MaxPooling2D2x2Conv2D32f3x3MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/1_l1_MaxPooling2D2x2.png[]
++
 .2_l2_Conv2D32f3x3
 image::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D32f3x3MaxPooling2D2x2Conv2D32f3x3MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/2_l2_Conv2D32f3x3.png[]
++
 .3_l3_MaxPooling2D2x2
 image::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D32f3x3MaxPooling2D2x2Conv2D32f3x3MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/3_l3_MaxPooling2D2x2.png[]
 
 There's some redundancy in features generated, hence the model is susceptible to over-fitting.
 
 === Kernel size
-We keep the 8 filtered network configuration from the previous section and experiment here for kernel sizes:
-3x3, 5x5, 7x7 and 9x9
+We keep the 8 filtered network configuration from the previous section and experiment here for kernel sizes: 3x3, 5x5, 7x7 and 9x9.
 
 We obtain the following plots:
 
@@ -671,8 +678,7 @@ include::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f7x7MaxPoolin
 include::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f9x9MaxPooling2D2x2Conv2D8f9x9MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/list.adoc[tags=metrics]
 
 Anything other than 3x3 will cause under-fitting or increase the risk of it.
-Our image is 28x28, hence, the spatial information is quite localized, it's unlikely that we obtain more helpful
-spatial information by choosing bigger kernel say for example 9x9(validation accuracy higher -> under-fitting)
+Our image is 28x28, hence, the spatial information is quite localized, it's unlikely that we obtain more helpful spatial information by choosing bigger kernel say for example 9x9(validation accuracy higher -> under-fitting).
 
 If we examine the accuracy/loss values:
 
@@ -684,7 +690,8 @@ include::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f3x3MaxPoolin
 +
 include::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f9x9MaxPooling2D2x2Conv2D8f9x9MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/list.adoc[tags=result]
 
-3x3 kernel performs better. By examining the incorrectly classified samples:
+3x3 kernel performs better.
+By examining the incorrectly classified samples:
 
 * 3x3:
 +
@@ -694,54 +701,63 @@ include::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f3x3MaxPoolin
 +
 include::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f9x9MaxPooling2D2x2Conv2D8f9x9MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/list.adoc[tags=incorrect]
 
-We can see that 9x9 misses more spatial information. For example, in the last row, 2 was detected as 6 though 2 in the
-image doesnt have any loop like feature and also in case of the 1st example, it missed the loop in the 9 possibly due
-to large kernel size
+We can see that 9x9 misses more spatial information.
+For example, in the last row, 2 was detected as 6 though 2 in the image doesnt have any loop like feature and also in case of the 1st example, it missed the loop in the 9 possibly due to large kernel size
 
 To clearly see the difference, it would be interesting to visualize the activations of convolution layers.
 
 * 3x3:
 +
-we have already seen the intermediate activations for model with 8 filters and 3x3 kernel. If we recall, we saw that
-it had fair distribution that covered overall part of 7.
+we have already seen the intermediate activations for model with 8 filters and 3x3 kernel.
+If we recall, we saw that it had fair distribution that covered overall part of 7.
 
 * 9x9:
 +
 .0_l0_Conv2D8f9x9
 image::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f9x9MaxPooling2D2x2Conv2D8f9x9MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/0_l0_Conv2D8f9x9.png[]
++
 .1_l1_MaxPooling2D2x2
 image::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f9x9MaxPooling2D2x2Conv2D8f9x9MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/1_l1_MaxPooling2D2x2.png[]
++
 .2_l2_Conv2D8f9x9
 image::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f9x9MaxPooling2D2x2Conv2D8f9x9MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/2_l2_Conv2D8f9x9.png[]
++
 .3_l3_MaxPooling2D9x9
 image::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f9x9MaxPooling2D2x2Conv2D8f9x9MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/3_l3_MaxPooling2D2x2.png[]
 In the end the feature map used for detection is just 2 colors.
 
-=== Pooling Types:
-We consider 2 types: AveragePooling and Maximum pooling. Since our image is greyscale, and the histogram is not
-uniformly spread, we expect Maximum Pooling to do better than Average Pooling.
+=== Pooling Types
+We consider 2 types: AveragePooling and Maximum pooling.
+Since our image is greyscale, and the histogram is not uniformly spread, we expect Maximum Pooling to do better than Average Pooling.
 Below are the results:
+
 * Max Pooling:
++
 include::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f3x3MaxPooling2D2x2Conv2D8f3x3MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/list.adoc[tags=result]
 * Average Pooling:
++
 include::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f3x3AveragePooling2DConv2D8f3x3AveragePooling2DFlattenDense512reluDense512reluDense10softmax/list.adoc[tags=result]
 
 Our assumption seems to be correct, Max pooling seems to extract better features than Average pooling.
 
 It would be interesting to visualize the activations under the 2 configurations.
+
 * Max Pooling:
 +
-We have already seen the intermediate activations for model with 8 filters and 3x3 kernel. If we recall, we saw that
-it had fair distribution that covered overall part of 7.
+We have already seen the intermediate activations for model with 8 filters and 3x3 kernel.
+If we recall, we saw that it had fair distribution that covered overall part of 7.
 
 * Average Pooling:
 +
 .0_l0_Conv2D8f3x3
 image::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f3x3AveragePooling2DConv2D8f3x3AveragePooling2DFlattenDense512reluDense512reluDense10softmax/0_l0_Conv2D8f3x3.png[]
++
 .1_l1_AveragePooling2D
 image::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f3x3AveragePooling2DConv2D8f3x3AveragePooling2DFlattenDense512reluDense512reluDense10softmax/1_l1_AveragePooling2D.png[]
++
 .2_l2_Conv2D8f3x3
 image::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f3x3AveragePooling2DConv2D8f3x3AveragePooling2DFlattenDense512reluDense512reluDense10softmax/2_l2_Conv2D8f3x3.png[]
++
 .3_l3_AveragePooling2D
 image::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f3x3AveragePooling2DConv2D8f3x3AveragePooling2DFlattenDense512reluDense512reluDense10softmax/3_l3_AveragePooling2D.png[]
 We see that averaging, though being uniform across 7 like MaxPooling, it smoothens out the edges and thin lines and hence looses some ability to distinguish such features.
@@ -756,7 +772,7 @@ include::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f3x3MaxPoolin
 include::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f3x3AveragePooling2DConv2D8f3x3AveragePooling2DFlattenDense512reluDense512reluDense10softmax/list.adoc[tags=incorrect]
 7/9 errors contain thin and distinct features compared to max pooling which had 4/9 such errors.(hence better distributed)
 
-=== Conclusion:
+=== Conclusion
 Finally we end up with the following model and configuration:
 
 include::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f3x3MaxPooling2D2x2Conv2D8f3x3MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/list.adoc[tags=model]
@@ -768,7 +784,25 @@ include::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f3x3MaxPoolin
 
 == Auto-encoder
 
+=== Parameters
+* Input:
++
+The 2d Gray scale image from MNIST database which are of 28x28 pixels, are used as an input to our CNN.
+
+* Output:
++
+A 2d Grayscale 28x28 pixels image generated by our model after learning from ip samples.
+
+=== Procedure
+* Training &  Testing
+Where we are training or testing the x_input and y_output are the same.
+* Evaluation
++
+The difference between the actual and reconstructed image is used to evaluate the performance.
+
+=== Study
 Here we evaluate 3 types of auto encoders:
+
 * Simple encoder
 * Deep encoder
 * Convolution encoder
@@ -781,7 +815,7 @@ The parameters used for testing the encoders are:
     "optimizer": "Adadelta",
     "activation": "relu",
     "nb_epochs": 50,
-    "batch_size": 256,
+    "batch_size": 256
 }
 ----
 
@@ -791,8 +825,10 @@ The parameters used for testing the encoders are:
 +
 .Autoencoder
 image::./op/Autoencoder/autoencoder.png[]
++
 .Encoder:
 image::./op/Autoencoder/autoencoder_encoder.png[]
++
 .Decoder
 image::./op/Autoencoder/autoencoder_decoder.png[]
 
@@ -800,8 +836,10 @@ image::./op/Autoencoder/autoencoder_decoder.png[]
 +
 .Autoencoder
 image::./op/Autoencoder/deepautoencoder.png[]
++
 .Encoder:
 image::./op/Autoencoder/deepautoencoder_encoder.png[]
++
 .Decoder
 image::./op/Autoencoder/deepautoencoder_decoder.png[]
 
@@ -811,7 +849,6 @@ image::./op/Autoencoder/deepautoencoder_decoder.png[]
 image::./op/Autoencoder/convautoencoder.png[]
 
 === Test results
-
 ==== Metrics
 
 * Simple encoder
