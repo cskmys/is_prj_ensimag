@@ -767,3 +767,87 @@ include::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f3x3MaxPoolin
 
 
 == Auto-encoder
+
+Here we evaluate 3 types of auto encoders:
+* Simple encoder
+* Deep encoder
+* Convolution encoder
+
+The parameters used for testing the encoders are:
+[source, json]
+----
+{
+    "loss_func": "binary_crossentropy",
+    "optimizer": "Adadelta",
+    "activation": "relu",
+    "nb_epochs": 50,
+    "batch_size": 256,
+}
+----
+
+=== Model
+
+* Simple encoder
++
+.Autoencoder
+image::./op/Autoencoder/autoencoder.png[]
+.Encoder:
+image::./op/Autoencoder/autoencoder_encoder.png[]
+.Decoder
+image::./op/Autoencoder/autoencoder_decoder.png[]
+
+* Deep encoder
++
+.Autoencoder
+image::./op/Autoencoder/deepautoencoder.png[]
+.Encoder:
+image::./op/Autoencoder/deepautoencoder_encoder.png[]
+.Decoder
+image::./op/Autoencoder/deepautoencoder_decoder.png[]
+
+* Convolutional autoencoder
++
+.Autoencoder
+image::./op/Autoencoder/convautoencoder.png[]
+
+=== Test results
+
+==== Metrics
+
+* Simple encoder
++
+.Metrics
+image::./op/Autoencoder/autoencoder_metrics.png[]
+
+* Deep encoder
++
+.Metrics
+image::./op/Autoencoder/deepautoencoder_metrics.png[]
+
+* Convolutional autoencoder
++
+.Metrics
+image::./op/Autoencoder/convautoencoder_metrics.png[]
+
+=== Conclusion
+
+If we compare the outputs produced by each of the type:
+
+* Simple encoder
++
+.Output
+image::./op/Autoencoder/autoencoder_op.png[]
+
+* Deep encoder
++
+.Output
+image::./op/Autoencoder/deepautoencoder_op.png[]
+
+* Convolutional autoencoder
++
+.Output
+image::./op/Autoencoder/convautoencoder_op.png[]
+
+We see that convolutional encoder manages to preserve features while simple and deep auto-encoders tend to loose thin and narrow features.
+
+From visual inspection we can say that convolutional auto-encoders perform the best.
