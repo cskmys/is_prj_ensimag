@@ -6,6 +6,7 @@ import paths as op
 import model as m
 import layers as l
 import utils as ut
+from keract import get_activations, display_activations
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # Supress warning and informational messages
 
@@ -63,20 +64,6 @@ def kernel_tst_prev_model(lr, optimizer, loss_func, activation, nb_epochs, batch
         run_test_suite(cnn, layers)
 
 
-def kernel_pool_tst_prev_model(lr, optimizer, loss_func, activation, nb_epochs, batch_siz):
-        cnn = m.CNN(lr, optimizer, loss_func, activation, nb_epochs, batch_siz)
-        L = l.Layers(cnn.cfg)
-        layers = [L.ConvIp(8, (3, 3)), L.MaxPooling((2, 2)), L.Conv(8, (3, 3)), L.MaxPooling((2, 2)), L.Flat(),
-                  L.HiddenDense(512), L.HiddenDense(512), L.OpDense()]
-        run_test_suite(cnn, layers)
-
-        cnn = m.CNN(lr, optimizer, loss_func, activation, nb_epochs, batch_siz)
-        L = l.Layers(cnn.cfg)
-        layers = [L.ConvIp(8, (3, 3)), L.AvgPooling(), L.Conv(8, (3, 3)), L.AvgPooling(), L.Flat(),
-                  L.HiddenDense(512), L.HiddenDense(512), L.OpDense()]
-        run_test_suite(cnn, layers)
-
-
 def filter_tst(lr, optimizer, loss_func, activation, nb_epochs, batch_siz):
     for i in range(6):
         nb_filters = 2 ** (i+1)
@@ -113,6 +100,68 @@ def kernel_filter_test(units, lr, optimizer, loss_func, activation, nb_epochs, b
                 exit(0)
 
 
+def kernel_pool_tst_prev_model(lr, optimizer, loss_func, activation, nb_epochs, batch_siz):
+    cnn = m.CNN(lr, optimizer, loss_func, activation, nb_epochs, batch_siz)
+    L = l.Layers(cnn.cfg)
+    layers = [L.ConvIp(8, (3, 3)), L.MaxPooling((2, 2)), L.Conv(8, (3, 3)), L.MaxPooling((2, 2)), L.Flat(),
+              L.HiddenDense(512), L.HiddenDense(512), L.OpDense()]
+    run_test_suite(cnn, layers)
+
+    cnn = m.CNN(lr, optimizer, loss_func, activation, nb_epochs, batch_siz)
+    L = l.Layers(cnn.cfg)
+    layers = [L.ConvIp(8, (3, 3)), L.AvgPooling(), L.Conv(8, (3, 3)), L.AvgPooling(), L.Flat(),
+              L.HiddenDense(512), L.HiddenDense(512), L.OpDense()]
+    run_test_suite(cnn, layers)
+
+
+def keract_magique(cfg):
+    keract_inputs = cfg.prj.data.mod_ip.test_ip[:1]
+    activations = get_activations(cfg.get_nn(), keract_inputs)
+    display_activations(activations, cmap='gray', save=True, directory=op.get_full_file_nam(cfg, '.'))
+
+
+def keract_tst(lr, optimizer, loss_func, activation, nb_epochs, batch_siz):
+    # filter test at 3x3 kernel
+    for i in [4, 32]:
+        nb_filters = i
+        cnn = m.CNN(lr, optimizer, loss_func, activation, nb_epochs, batch_siz)
+        L = l.Layers(cnn.cfg)
+        layers = [L.ConvIp(nb_filters, (3, 3)), L.MaxPooling((2, 2)), L.Conv(nb_filters, (3, 3)), L.MaxPooling((2, 2)), L.Flat(),
+                  L.HiddenDense(512), L.HiddenDense(512), L.OpDense()]
+        run_test(cnn, layers)
+        keract_magique(cnn.cfg)
+        clean_up_test(cnn)
+
+    # kernel test at 8 filters
+    for i in [3, 9]:
+        kernel_dim = i
+        kernel = (kernel_dim, kernel_dim)
+        cnn = m.CNN(lr, optimizer, loss_func, activation, nb_epochs, batch_siz)
+        L = l.Layers(cnn.cfg)
+        layers = [L.ConvIp(8, kernel), L.MaxPooling((2, 2)), L.Conv(8, kernel), L.MaxPooling((2, 2)), L.Flat(),
+                  L.HiddenDense(512), L.HiddenDense(512), L.OpDense()]
+        run_test(cnn, layers)
+        keract_magique(cnn.cfg)
+        clean_up_test(cnn)
+
+    # pooling test
+    cnn = m.CNN(lr, optimizer, loss_func, activation, nb_epochs, batch_siz)
+    L = l.Layers(cnn.cfg)
+    layers = [L.ConvIp(8, (3, 3)), L.MaxPooling((2, 2)), L.Conv(8, (3, 3)), L.MaxPooling((2, 2)), L.Flat(),
+              L.HiddenDense(512), L.HiddenDense(512), L.OpDense()]
+    run_test(cnn, layers)
+    keract_magique(cnn.cfg)
+    clean_up_test(cnn)
+
+    cnn = m.CNN(lr, optimizer, loss_func, activation, nb_epochs, batch_siz)
+    L = l.Layers(cnn.cfg)
+    layers = [L.ConvIp(8, (3, 3)), L.AvgPooling(), L.Conv(8, (3, 3)), L.AvgPooling(), L.Flat(),
+              L.HiddenDense(512), L.HiddenDense(512), L.OpDense()]
+    run_test(cnn, layers)
+    keract_magique(cnn.cfg)
+    clean_up_test(cnn)
+
+
 def test():
     # # start_tst(lr=0.002, optimizer='Adamax', loss_func='categorical_crossentropy', activation='relu', nb_epochs=6, batch_siz=64)
     # # filter_tst(lr=0.002, optimizer='Adamax', loss_func='categorical_crossentropy', activation='relu', nb_epochs=6, batch_siz=64)
@@ -127,4 +176,5 @@ def test():
     # kernel_tst_prev_model(lr=0.002, optimizer='Adamax', loss_func='categorical_crossentropy', activation='relu', nb_epochs=6, batch_siz=64, filters=32)
     # # kernel_tst_prev_model(lr=0.002, optimizer='Adamax', loss_func='categorical_crossentropy', activation='relu', nb_epochs=6, batch_siz=64, filters=64)
     # kernel_filter_test(units=128, lr=0.002, optimizer='Adamax', loss_func='categorical_crossentropy', activation='relu', nb_epochs=10, batch_siz=128)
-    kernel_pool_tst_prev_model(lr=0.002, optimizer='Adamax', loss_func='categorical_crossentropy', activation='relu', nb_epochs=6, batch_siz=64)
+    # kernel_pool_tst_prev_model(lr=0.002, optimizer='Adamax', loss_func='categorical_crossentropy', activation='relu', nb_epochs=6, batch_siz=64)
+    keract_tst(lr=0.002, optimizer='Adamax', loss_func='categorical_crossentropy', activation='relu', nb_epochs=6, batch_siz=64)

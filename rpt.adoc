@@ -449,7 +449,7 @@ we checked the default learning rates of the optimizers recommended by keras, we
     "adam": 0.001,
     "adamax": 0.002,
     "Nadam": 0.002,
-    "RMSProp": 0.001,
+    "RMSProp": 0.001
 }
 ----
 
@@ -590,8 +590,6 @@ include::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D16f3x3MaxPooli
 +
 include::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D32f3x3MaxPooling2D2x2Conv2D32f3x3MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/list.adoc[tags=metrics]
 
-
-
 Under 8 filters we ran into risk of under-fitting and over 8, we risk being stuck at plateau where the accuracy for
 the test data will never improve. Hence, we will choose 8.
 
@@ -622,7 +620,33 @@ include::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D32f3x3MaxPooli
 Both models make almost same types of errors. But, 32 filter model gets saturated, while with 8 filters we still have
 some room to explore.
 
-It'll also be interesting to visualize the activations at convolution layers for them both.
+It'll also be interesting to visualize the activations at convolution layers for them both:
+
+* 8 Filter:
++
+.0_l0_Conv2D8f3x3
+image::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f3x3MaxPooling2D2x2Conv2D8f3x3MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/0_l0_Conv2D8f3x3.png[]
+.1_l1_MaxPooling2D2x2
+image::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f3x3MaxPooling2D2x2Conv2D8f3x3MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/1_l1_MaxPooling2D2x2.png[]
+.2_l2_Conv2D8f3x3
+image::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f3x3MaxPooling2D2x2Conv2D8f3x3MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/2_l2_Conv2D8f3x3.png[]
+.3_l3_MaxPooling2D2x2
+image::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f3x3MaxPooling2D2x2Conv2D8f3x3MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/3_l3_MaxPooling2D2x2.png[]
+
+The features are quite different from another and cover most of 7. Hence, it's quite generalized to detect 7.
+
+* 32 filter:
++
+.0_l0_Conv2D32f3x3
+image::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D32f3x3MaxPooling2D2x2Conv2D32f3x3MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/0_l0_Conv2D32f3x3.png[]
+.1_l1_MaxPooling2D2x2
+image::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D32f3x3MaxPooling2D2x2Conv2D32f3x3MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/1_l1_MaxPooling2D2x2.png[]
+.2_l2_Conv2D32f3x3
+image::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D32f3x3MaxPooling2D2x2Conv2D32f3x3MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/2_l2_Conv2D32f3x3.png[]
+.3_l3_MaxPooling2D2x2
+image::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D32f3x3MaxPooling2D2x2Conv2D32f3x3MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/3_l3_MaxPooling2D2x2.png[]
+
+There's some redundancy in features generated, hence the model is susceptible to over-fitting.
 
 === Kernel size
 We keep the 8 filtered network configuration from the previous section and experiment here for kernel sizes:
@@ -644,11 +668,11 @@ include::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f7x7MaxPoolin
 
 * 9x9:
 +
-include::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f7x7MaxPooling2D2x2Conv2D8f7x7MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/list.adoc[tags=metrics]
+include::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f9x9MaxPooling2D2x2Conv2D8f9x9MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/list.adoc[tags=metrics]
 
 Anything other than 3x3 will cause under-fitting or increase the risk of it.
 Our image is 28x28, hence, the spatial information is quite localized, it's unlikely that we obtain more helpful
-spatial information by choosing bigger kernel say for example 9x9
+spatial information by choosing bigger kernel say for example 9x9(validation accuracy higher -> under-fitting)
 
 If we examine the accuracy/loss values:
 
@@ -658,7 +682,7 @@ include::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f3x3MaxPoolin
 
 * 9x9:
 +
-include::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f7x7MaxPooling2D2x2Conv2D8f7x7MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/list.adoc[tags=result]
+include::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f9x9MaxPooling2D2x2Conv2D8f9x9MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/list.adoc[tags=result]
 
 3x3 kernel performs better. By examining the incorrectly classified samples:
 
@@ -668,19 +692,35 @@ include::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f3x3MaxPoolin
 
 * 9x9:
 +
-include::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f7x7MaxPooling2D2x2Conv2D8f7x7MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/list.adoc[tags=incorrect]
+include::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f9x9MaxPooling2D2x2Conv2D8f9x9MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/list.adoc[tags=incorrect]
 
-We can see that 9x9 misses more spatial information. For example, in the last sample, 4 was detected as 1
-(maybe because it missed the 2nd line) and also in case of the 2nd example in the sample, 6 was classified as 0
-(again same reason as before).
+We can see that 9x9 misses more spatial information. For example, in the last row, 2 was detected as 6 though 2 in the
+image doesnt have any loop like feature and also in case of the 1st example, it missed the loop in the 9 possibly due
+to large kernel size
 
 To clearly see the difference, it would be interesting to visualize the activations of convolution layers.
+
+* 3x3:
++
+we have already seen the intermediate activations for model with 8 filters and 3x3 kernel. If we recall, we saw that
+it had fair distribution that covered overall part of 7.
+
+* 9x9:
++
+.0_l0_Conv2D8f9x9
+image::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f9x9MaxPooling2D2x2Conv2D8f9x9MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/0_l0_Conv2D8f9x9.png[]
+.1_l1_MaxPooling2D2x2
+image::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f9x9MaxPooling2D2x2Conv2D8f9x9MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/1_l1_MaxPooling2D2x2.png[]
+.2_l2_Conv2D8f9x9
+image::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f9x9MaxPooling2D2x2Conv2D8f9x9MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/2_l2_Conv2D8f9x9.png[]
+.3_l3_MaxPooling2D9x9
+image::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f9x9MaxPooling2D2x2Conv2D8f9x9MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/3_l3_MaxPooling2D2x2.png[]
+In the end the feature map used for detection is just 2 colors.
 
 === Pooling Types:
 We consider 2 types: AveragePooling and Maximum pooling. Since our image is greyscale, and the histogram is not
 uniformly spread, we expect Maximum Pooling to do better than Average Pooling.
 Below are the results:
-
 * Max Pooling:
 include::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f3x3MaxPooling2D2x2Conv2D8f3x3MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/list.adoc[tags=result]
 * Average Pooling:
@@ -689,6 +729,32 @@ include::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f3x3AveragePo
 Our assumption seems to be correct, Max pooling seems to extract better features than Average pooling.
 
 It would be interesting to visualize the activations under the 2 configurations.
+* Max Pooling:
++
+We have already seen the intermediate activations for model with 8 filters and 3x3 kernel. If we recall, we saw that
+it had fair distribution that covered overall part of 7.
+
+* Average Pooling:
++
+.0_l0_Conv2D8f3x3
+image::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f3x3AveragePooling2DConv2D8f3x3AveragePooling2DFlattenDense512reluDense512reluDense10softmax/0_l0_Conv2D8f3x3.png[]
+.1_l1_AveragePooling2D
+image::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f3x3AveragePooling2DConv2D8f3x3AveragePooling2DFlattenDense512reluDense512reluDense10softmax/1_l1_AveragePooling2D.png[]
+.2_l2_Conv2D8f3x3
+image::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f3x3AveragePooling2DConv2D8f3x3AveragePooling2DFlattenDense512reluDense512reluDense10softmax/2_l2_Conv2D8f3x3.png[]
+.3_l3_AveragePooling2D
+image::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f3x3AveragePooling2DConv2D8f3x3AveragePooling2DFlattenDense512reluDense512reluDense10softmax/3_l3_AveragePooling2D.png[]
+We see that averaging, though being uniform across 7 like MaxPooling, it smoothens out the edges and thin lines and hence looses some ability to distinguish such features.
+
+If we observe the incorrectly classified samples:
+
+* Max pooling
++
+include::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f3x3MaxPooling2D2x2Conv2D8f3x3MaxPooling2D2x2FlattenDense512reluDense512reluDense10softmax/list.adoc[tags=incorrect]
+* Avg pooling
++
+include::./op/Adamaxcategorical_crossentropyrelul0.002e6b64mConv2D8f3x3AveragePooling2DConv2D8f3x3AveragePooling2DFlattenDense512reluDense512reluDense10softmax/list.adoc[tags=incorrect]
+7/9 errors contain thin and distinct features compared to max pooling which had 4/9 such errors.(hence better distributed)
 
 === Conclusion:
 Finally we end up with the following model and configuration:
